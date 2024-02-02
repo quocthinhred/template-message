@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        line-height: 28px;
+    }
+
+    .item {
+        padding: 5px;
+    }
+
+    label {
+        display: block;
+    }
+
+    input {
+        border-radius: 50px;
+        padding: 10px 15px;
+        border: 1px solid #666;
+        outline: none !important;
+    }
+
+    button {
+        border-radius: 50px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 18px;
+        color: #fff;
+    }
+
+    button:hover {
+        filter: brightness(0.9);
+        transition: all 0.3s;
+        
+    }
+
+    #add {
+        background-color: green;
+    }
+
+    #copy {
+        background-color: rgb(95, 178, 250);
+    }
+</style>
+
+<body style="display: flex; justify-content: center; padding-top: 100px;">
+    <div style="padding: 23px; border: 1px solid #666; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+        <div>
+            <div>
+                <label>Tiêu đề</label>
+                <input placeholder="Tiêu đề" />
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <div>
+                    <label>Nội dung</label>
+                    <input placeholder="Nội dung" />
+                </div>
+                <div>
+                    <label>Liên kết</label>
+                    <input placeholder="Liên kết" />
+                </div>
+            </div>
+            <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                <div>
+                    <label>Nội dung</label>
+                    <input placeholder="Nội dung" />
+                </div>
+                <div>
+                    <label>Liên kết</label>
+                    <input placeholder="Liên kết" />
+                </div>
+            </div>
+        </div>
+        <button id="add" style="margin: auto;">Thêm</button>
+    </div>
+    <div style="padding: 0 20px; border: 1px solid #666; display: flex; flex-direction: column;">
+        <div id="content">
+            <h1 class="item">Release i-Test 01-02-2024</h1>
+            <ul>
+                <li><span class="item">Tạo đề tự động</span><span class="item"> - </span><span class="item"
+                        href="www.google.com">www.google.com</span>
+                </li>
+                <li><span class="item">Tạo đề thi theo cấu trúc mới</span><span class="item"> - </span><span class="item"
+                        href="www.fb.com">www.fb.com</span></li>
+                <li><span class="item">Xem trước đề thi</span><span class="item"> - </span><span class="item"
+                        href="www.shopee.vn">www.shopee.vn</span>
+                </li>
+            </ul>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: center; flex: 1; align-items: flex-end; margin-bottom: 20px;">
+            <button id="copy">Sao chép</button>
+        </div>
+    </div>
+    
+    
+    <script>
+        const list = document.querySelector("#content > ul");
+        function init() {
+            const items = document.querySelectorAll(".item");
+            const removes = document.querySelectorAll(".remove");
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.contentEditable = "true";
+                    item.spellcheck = "false";
+                })
+
+                item.addEventListener('blur', () => {
+                    item.contentEditable = "false";
+                })
+            })
+
+            removes.forEach((remove) => {
+                remove.addEventListener('click', () => {
+                    remove.parentElement.remove();
+                })
+            })
+        }
+        init();
+        document.getElementById('add').addEventListener('click', () => {
+            const newItem = document.createElement('li');
+            newItem.innerHTML = '<span class="item">Tạo đề tự động</span><span class="it    em"> - </span><span class="item" href="www.google.com">www.google.com</span><span class="remove">❌</span>';
+            list.appendChild(newItem)
+            init()
+        })
+        document.getElementById('copy').addEventListener('click', function () {
+            let range = document.createRange();
+            let textToCopy = document.getElementById('content');
+            range.selectNode(textToCopy);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+
+            try {
+                let successful = document.execCommand('copy');
+                let msg = successful ? 'thành công' : 'thất bại';
+                console.log('Sao chép văn bản ' + msg);
+            } catch (err) {
+                console.log('Không thể sao chép, lỗi: ', err);
+            }
+
+            window.getSelection().removeAllRanges();
+        });
+    </script>
+</body>
+
+</html>
