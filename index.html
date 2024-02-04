@@ -127,6 +127,10 @@
         justify-content: center;
         gap: 160px;
     }
+
+    div:empty {
+        display: none;
+    }
 </style>
 
 <body style="padding-top: 100px;">
@@ -138,7 +142,7 @@
                     <input name="title" placeholder="Nhập tiêu đề" />
                 </div>
             </div>
-            <div class="form-item">
+            <div class="form-item" data-index="1">
                 <div style="flex: 1">
                     <label>Nội dung</label>
                     <input name="content-1" placeholder="Nhập nội dung" />
@@ -151,7 +155,7 @@
                     ✖
                 </div>
             </div>
-            <div class="form-item">
+            <div class="form-item" data-index="2">
                 <div style="flex: 1">
                     <label>Nội dung</label>
                     <input name="content-2" placeholder="Nhập nội dung" />
@@ -171,10 +175,10 @@
         <div id="content">
             <h1 id="title" class="title" style="margin-bottom: 20px;">Tiêu đề mẫu</h1>
             <ul>
-                <li><span class="content" id="content-1">Nội dung mẫu</span> - <a class="link" href="https://www.google.com"
+                <li><span class="content" id="content-1">Nội dung mẫu</span> - <a class="link" target="_blank" href="https://www.google.com"
                         id="link-1">www.google.com</a>
                 </li>
-                <li><span class="content" id="content-2">Nội dung mẫu 2</span> - <a class="link" id="link-2"
+                <li><span class="content" id="content-2">Nội dung mẫu 2</span> - <a class="link" target="_blank" id="link-2"
                         href="https://www.fb.com">www.fb.com</a>
                 </li>
             </ul>
@@ -211,6 +215,10 @@
 
             removes.forEach((remove) => {
                 remove.addEventListener('click', () => {
+                    const removeIndex = remove.parentElement.getAttribute("data-index");
+                    const removedElement = document.getElementById(`content-${removeIndex}`).parentElement;
+                    removedElement.remove();
+
                     remove.parentElement.remove();
                 })
             })
@@ -227,7 +235,11 @@
 
             linkInput.addEventListener('change', (e) => {
                 linkElement.innerText = e.target.value;
-                linkElement.href = "https://" + e.target.value;
+                if (e?.target?.value?.startsWith("https://")) {
+                    linkElement.href = e.target.value;
+                } else {
+                    linkElement.href = "https://" + e.target.value;
+                }
             })
         }
 
@@ -240,7 +252,7 @@
 
         addButton.addEventListener('click', function () {
             const newFormItem = document.createElement("div");
-            newFormItem.innerHTML = `<div class="form-item">
+            newFormItem.innerHTML = `<div class="form-item" data-index=${count}>
                 <div style="flex: 1">
                     <label>Nội dung</label>
                     <input name="content-${count}" placeholder="Nhập nội dung" />
@@ -256,7 +268,7 @@
             formList.appendChild(newFormItem);
 
             const newItem = document.createElement('li');
-            newItem.innerHTML = `<span class="content" id="content-${count}">Nội dung mẫu</span> - <a class="link" href="www.google.com" id="link-${count}">www.google.com</a>`;
+            newItem.innerHTML = `<span class="content" id="content-${count}">Nội dung mẫu</span> - <a class="link" target="_blank" href="www.google.com" id="link-${count}">www.google.com</a>`;
             list.appendChild(newItem);
 
             init(count);
