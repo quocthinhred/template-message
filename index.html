@@ -8,7 +8,14 @@
 </head>
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 28px;
     }
 
@@ -16,63 +23,248 @@
         padding: 5px;
     }
 
+    label {
+        display: block;
+        color: #000;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    input {
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0;
+        outline: none !important;
+        font-size: 16px;
+        height: 36px;
+        width: 100%;
+        background-color: transparent;
+    }
+
+    input:focus {
+        transition: all 0.3s;
+        border-color: #46b5d1 !important;
+    }
+
+    button {
+        border-radius: 50px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        color: #fff;
+    }
+
+    button:hover {
+        filter: brightness(0.9);
+        transition: all 0.3s;
+
+    }
+
+    #add {
+        background-color: green;
+    }
+
+    .copy-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        align-items: flex-end;
+        margin-bottom: 20px;
+    }
+
+    #copy {
+        margin-top: 20px;
+        background-color: rgb(95, 178, 250);
+    }
+
+    .form-control {
+        padding: 23px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        margin-bottom: 40px;
+        width: 100%;
+        max-width: 600px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .form-item {
+        position: relative;
+        display: flex;
+        border-radius: 5px;
+        gap: 20px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .form-item:hover {
+        background-color: aliceblue;
+    }
+
     .remove {
+        cursor: pointer;
         display: none;
     }
 
-    li:hover > .remove {
-        display: inline-block;
-        margin-left: 10px;
-        cursor: pointer;
+    .form-item:hover .remove {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+    .preview {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 160px;
     }
 </style>
 
-<body>
-    <div id="content">
-        <h1 class="item">Release i-Test 01-02-2024</h1>
-        <ul>
-            <li><span class="item">Tạo đề tự động</span><span class="item"> - </span><span class="item"
-                    href="www.google.com">www.google.com</span><span class="remove">❌</span>
-            </li>
-            <li><span class="item">Tạo đề thi theo cấu trúc mới</span><span class="item"> - </span><span class="item"
-                    href="www.fb.com">www.fb.com</span><span class="remove">❌</span></li>
-            <li><span class="item">Xem trước đề thi</span><span class="item"> - </span><span class="item"
-                    href="www.shopee.vn">www.shopee.vn</span><span class="remove">❌</span>
-            </li>
-        </ul>
+<body style="padding-top: 100px;">
+    <div class="form-control">
+        <div id="form-control-item" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Tiêu đề</label>
+                    <input name="title" placeholder="Nhập tiêu đề" />
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1">
+                    <label>Nội dung</label>
+                    <input name="content-1" placeholder="Nhập nội dung" />
+                </div>
+                <div style="flex: 1">
+                    <label>Liên kết</label>
+                    <input name="link-1" placeholder="Nhập liên kết" />
+                </div>
+                <div class="remove">
+                    ✖
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1">
+                    <label>Nội dung</label>
+                    <input name="content-2" placeholder="Nhập nội dung" />
+                </div>
+                <div style="flex: 1">
+                    <label>Liên kết</label>
+                    <input name="link-2" placeholder="Nhập liên kết" />
+                </div>
+                <div class="remove">
+                    ✖
+                </div>
+            </div>
+        </div>
+        <button id="add" style="margin: auto; margin-top: 20px;">Thêm</button>
     </div>
-    <button id="add">Thêm</button>
-    <button id="copy">Sao chép</button>
-    <script>
-        const list = document.querySelector("#content > ul");
-        function init() {
-            const items = document.querySelectorAll(".item");
-            const removes = document.querySelectorAll(".remove");
-            items.forEach(item => {
-                item.addEventListener('click', () => {
-                    item.contentEditable = "true";
-                    item.spellcheck = "false";
-                })
+    <div class="preview">
+        <div id="content">
+            <h1 id="title" class="title" style="margin-bottom: 20px;">Tiêu đề mẫu</h1>
+            <ul>
+                <li><span class="content" id="content-1">Nội dung mẫu</span> - <a class="link" href="https://www.google.com"
+                        id="link-1">www.google.com</a>
+                </li>
+                <li><span class="content" id="content-2">Nội dung mẫu 2</span> - <a class="link" id="link-2"
+                        href="https://www.fb.com">www.fb.com</a>
+                </li>
+            </ul>
+        </div>
+        <!-- <div id="content-media">
+            <h1 id="title" class="title" style="margin-bottom: 20px;">Tiêu đề mẫu</h1>
+            <ul>
+                <li><span class="content" id="content-1">Nội dung mẫu</span> - <a class="link" href="https://www.google.com"
+                        id="link-1">www.google.com</a>
+                </li>
+                <li><span class="content" id="content-2">Nội dung mẫu 2</span> - <a class="link" id="link-2"
+                        href="https://www.fb.com">www.fb.com</a>
+                </li>
+            </ul>
+        </div> -->
+    </div>
 
-                item.addEventListener('blur', () => {
-                    item.contentEditable = "false";
-                })
-            })
+    <div class="copy-btn">
+        <button id="copy">Sao chép</button>
+    </div>
+
+
+    <script>
+        let count = 3;
+        const addButton = document.getElementById("add");
+        const copyButton = document.getElementById("copy");
+        const formList = document.getElementById("form-control-item");
+        const list = document.querySelector("#content > ul");
+        const titleInput = document.getElementsByName("title")[0];
+        const titleElement = document.getElementById("title");
+
+        const init = (currentCount) => {
+            const removes = document.querySelectorAll(".remove");
 
             removes.forEach((remove) => {
                 remove.addEventListener('click', () => {
                     remove.parentElement.remove();
                 })
             })
+
+            const contentInput = document.getElementsByName(`content-${currentCount}`)[0];
+            const linkInput = document.getElementsByName(`link-${currentCount}`)[0];
+
+            const contentElement = document.getElementById(`content-${currentCount}`);
+            const linkElement = document.getElementById(`link-${currentCount}`);
+
+            contentInput.addEventListener('change', (e) => {
+                contentElement.innerText = e.target.value;
+            })
+
+            linkInput.addEventListener('change', (e) => {
+                linkElement.innerText = e.target.value;
+                linkElement.href = "https://" + e.target.value;
+            })
         }
-        init();
-        document.getElementById('add').addEventListener('click', () => {
-            const newItem = document.createElement('li');
-            newItem.innerHTML = '<span class="item">Tạo đề tự động</span><span class="it    em"> - </span><span class="item" href="www.google.com">www.google.com</span><span class="remove">❌</span>';
-            list.appendChild(newItem)
-            init()
+
+        init(1);
+        init(2);
+
+        titleInput.addEventListener('change', (e) => {
+            titleElement.innerText = e.target.value;
         })
-        document.getElementById('copy').addEventListener('click', function () {
+
+        addButton.addEventListener('click', function () {
+            const newFormItem = document.createElement("div");
+            newFormItem.innerHTML = `<div class="form-item">
+                <div style="flex: 1">
+                    <label>Nội dung</label>
+                    <input name="content-${count}" placeholder="Nhập nội dung" />
+                </div>
+                <div style="flex: 1">
+                    <label>Liên kết</label>
+                    <input name="link-${count}" placeholder="Nhập liên kết" />
+                </div>
+                <div class="remove">
+                    ✖
+                </div>
+            </div>`;
+            formList.appendChild(newFormItem);
+
+            const newItem = document.createElement('li');
+            newItem.innerHTML = `<span class="content" id="content-${count}">Nội dung mẫu</span> - <a class="link" href="www.google.com" id="link-${count}">www.google.com</a>`;
+            list.appendChild(newItem);
+
+            init(count);
+
+            count++;
+        })
+
+        copyButton.addEventListener('click', function () {
             let range = document.createRange();
             let textToCopy = document.getElementById('content');
             range.selectNode(textToCopy);
