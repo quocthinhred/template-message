@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghi chú tính năng</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 28px;
+    }
+
+    .item {
+        padding: 5px;
+    }
+
+    label {
+        display: block;
+        color: #000;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    input {
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0;
+        outline: none !important;
+        font-size: 16px;
+        height: 36px;
+        width: 100%;
+        background-color: transparent;
+    }
+
+    input:focus {
+        transition: all 0.3s;
+        border-color: #46b5d1 !important;
+    }
+
+    button {
+        border-radius: 50px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        color: #fff;
+    }
+
+    button:hover {
+        filter: brightness(0.9);
+        transition: all 0.3s;
+
+    }
+
+    #add {
+        background-color: green;
+    }
+
+    .copy-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        align-items: flex-end;
+        margin-bottom: 20px;
+    }
+
+    #copy {
+        margin-top: 20px;
+        background-color: rgb(95, 178, 250);
+    }
+
+    .form-control {
+        padding: 23px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        margin-bottom: 40px;
+        width: 100%;
+        max-width: 800px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .form-item {
+        position: relative;
+        display: flex;
+        border-radius: 5px;
+        gap: 20px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .form-item:hover {
+        background-color: aliceblue;
+    }
+
+    .remove {
+        cursor: pointer;
+        display: none;
+    }
+
+    .form-item:hover .remove {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+    .preview {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 160px;
+    }
+
+    div:empty {
+        display: none;
+    }
+
+    .connect {
+        display: none;
+    }
+
+    .connect.show {
+        display: inline;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        outline: none;
+    }
+
+    td {
+        padding: 20px;
+    }
+
+    .dropzone {
+        flex: 1;
+        border: 0.2rem dashed #6583fe;
+        padding: 2rem;
+        border-radius: 0.25rem;
+        background-color: #fff;
+        text-align: center;
+        font-size: 1.5rem;
+        transition: 0.25s background-color ease-in-out;
+        cursor: pointer;
+    }
+
+    .dropzone-dragging,
+    .dropzone:hover {
+        background-color: #f3f5ff;
+    }
+
+    .dropzone-icon {
+        max-width: 75px;
+        display: block;
+        margin: 0 auto 1.5rem;
+    }
+
+    .dropzone-input,
+    .dropzone-input-2 {
+        display: none;
+    }
+</style>
+
+<body style="padding-top: 100px;">
+    <div class="form-control">
+
+        <div id="form-control-item" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Tiêu đề</label>
+                    <input name="title" placeholder="Nhập tiêu đề" />
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Mô tả</label>
+                    <input name="description" placeholder="Nhập mô tả" />
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Chọn ảnh mô tả</label>
+                    <div style="display: flex; gap: 60px; align-items: center; height: 210px;">
+                        <div class="dropzone" id="dropzone">
+                            <img class="dropzone-icon"
+                                src="https://wickedev.com/wp-content/uploads/2021/02/cloud-uploading.png" />
+
+                            Chọn ảnh
+                            <input type="file" name="files" class="dropzone-input" multiple />
+                        </div>
+                        <div style="flex: 1;">
+                            <img style="height: 200px;" id="image-preview-1" src="https://i.imgur.com/YhZkEVh.png"
+                            alt="image-preview-1" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Chọn ảnh chủ đề</label>
+                    <div style="display: flex; gap: 60px; align-items: center; height: 210px;">
+                        <div class="dropzone" id="dropzone-2">
+                            <img class="dropzone-icon"
+                                src="https://wickedev.com/wp-content/uploads/2021/02/cloud-uploading.png" />
+
+                            Chọn ảnh
+                            <input type="file" name="files" class="dropzone-input-2" multiple />
+                        </div>
+                        <div style="flex: 1;">
+                            <img style="width: min(100%, 300px);" id="image-preview-2" src="https://i.imgur.com/yKboS4h.png"
+                                alt="image-preview-2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Tiêu đề danh sách</label>
+                    <input name="title-list" placeholder="Nhập tiêu đề danh sách" />
+                </div>
+            </div>
+            <div class="form-item" data-index="1">
+                <div style="flex: 1">
+                    <label>Nội dung</label>
+                    <input name="content-1" placeholder="Nhập nội dung" />
+                </div>
+                <div style="flex: 1">
+                    <label>Liên kết</label>
+                    <input name="link-1" placeholder="Nhập liên kết" />
+                </div>
+                <div class="remove">
+                    ✖
+                </div>
+            </div>
+            <div class="form-item" data-index="2">
+                <div style="flex: 1">
+                    <label>Nội dung</label>
+                    <input name="content-2" placeholder="Nhập nội dung" />
+                </div>
+                <div style="flex: 1">
+                    <label>Liên kết</label>
+                    <input name="link-2" placeholder="Nhập liên kết" />
+                </div>
+                <div class="remove">
+                    ✖
+                </div>
+            </div>
+        </div>
+        <button id="add" style="margin: auto; margin-top: 20px;">Thêm dòng ghi chú mới</button>
+    </div>
+    <div id="preview" class="preview">
+        <table style="max-width: 800px;">
+            <tbody>
+                <tr>
+                    <td>
+                        <h2><span id="title"
+                                style="color: rgb(30, 83, 163); font-size: x-large; text-transform: uppercase;">Tiêu đề
+                                mẫu</span></h2>
+                    </td>
+                    <td><img style="width: min(100%, 300px);" src="https://i.imgur.com/eyZ8Iya.png" alt="dtp-logo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span id="description" style="color: #a5397a; width: 50%;">Đây là câu mô tả mẫu.</span></td>
+                    <td rowspan="2">
+                        <h2 id="title-list" style="color: rgb(30, 83, 163); margin-bottom: 10px;">Tiêu đề danh sách</h2>
+                        <div id="content">
+                            <ul style="margin: 0 20px;">
+                                <li><span class="content" id="content-1">Nội dung mẫu</span><span class="connect"
+                                        id="connect-1"> - </span><a class="link" target="_blank"
+                                        href="https://www.google.com" id="link-1"></a>
+                                </li>
+                                <li><span class="content" id="content-2">Nội dung mẫu 2</span><span
+                                        class="connect" id="connect-2"> - </span><a class="link" target="_blank"
+                                        id="link-2" href="https://www.fb.com"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img id="image-1" style="width: min(100%, 300px);" src="https://i.imgur.com/YhZkEVh.png"
+                            alt="image-1" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><img id="image-2" style="width: min(100%, 700px);"
+                            src="https://i.imgur.com/OjGGZMu.png" alt="image-2" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="copy-btn">
+        <button id="copy">Sao chép</button>
+    </div>
+
+
+    <script>
+        const funcReadImage = (files, id, idPreview) => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const currentImg = document.getElementById(id);
+                const imagePreview = document.getElementById(idPreview);
+                if (currentImg) {
+                    currentImg.src = e.target.result;
+                    imagePreview.src = e.target.result;
+                }
+            }
+            reader.readAsDataURL(files[0]);
+        }
+        {
+            const dropzone = document.getElementById('dropzone');
+            const dropzone2 = document.getElementById('dropzone-2');
+            const dropzone_input = dropzone.querySelector('.dropzone-input');
+            const dropzone_input_2 = dropzone2.querySelector('.dropzone-input-2');
+            const imagePreview1 = document.getElementById("image-preview-1");
+            const imagePreview2 = document.getElementById("image-preview-2");
+            const multiple = dropzone_input.getAttribute('multiple') ? true : false;
+
+            ['drag', 'dragstart', 'dragend', 'dragover', 'dragenter', 'dragleave', 'drop'].forEach(function (event) {
+                dropzone.addEventListener(event, function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                dropzone2.addEventListener(event, function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+
+            dropzone.addEventListener('dragover', function (e) {
+                this.classList.add('dropzone-dragging');
+            }, false);
+
+            dropzone.addEventListener('dragleave', function (e) {
+                this.classList.remove('dropzone-dragging');
+            }, false);
+
+            dropzone.addEventListener('drop', function (e) {
+                this.classList.remove('dropzone-dragging');
+                let files = e.dataTransfer.files;
+
+                funcReadImage(files, "image-1", "image-preview-1")
+            }, false);
+
+            dropzone.addEventListener('click', function (e) {
+                dropzone_input.click();
+            });
+
+            dropzone_input.addEventListener('change', (e) => {
+                funcReadImage(e.target.files, "image-1", "image-preview-1");
+                dropzone_input.value = "";
+            })
+
+            dropzone2.addEventListener('dragover', function (e) {
+                this.classList.add('dropzone-dragging');
+            }, false);
+
+            dropzone2.addEventListener('dragleave', function (e) {
+                this.classList.remove('dropzone-dragging');
+            }, false);
+
+            dropzone2.addEventListener('drop', function (e) {
+                this.classList.remove('dropzone-dragging');
+                let files = e.dataTransfer.files;
+
+                funcReadImage(files, "image-2", "image-preview-2")
+
+            }, false);
+
+            dropzone2.addEventListener('click', function (e) {
+                dropzone_input_2.click();
+            });
+
+            dropzone_input_2.addEventListener('change', (e) => {
+                funcReadImage(e.target.files, "image-2", "image-preview-2");
+                dropzone_input_2.value = "";
+            })
+        }
+
+
+        let count = 3;
+        const addButton = document.getElementById("add");
+        const copyButton = document.getElementById("copy");
+        const formList = document.getElementById("form-control-item");
+        const list = document.querySelector("#content > ul");
+        const titleInput = document.getElementsByName("title")[0];
+        const titleElement = document.getElementById("title");
+        const titleListInput = document.getElementsByName("title-list")[0];
+        const titleListElement = document.getElementById("title-list");
+        const descriptionInput = document.getElementsByName("description")[0];
+        const descriptionElement = document.getElementById("description");
+
+        const init = (currentCount) => {
+            const removes = document.querySelectorAll(".remove");
+
+            removes.forEach((remove) => {
+                remove.addEventListener('click', () => {
+                    const removeIndex = remove.parentElement.getAttribute("data-index");
+                    const removedElement = document.getElementById(`content-${removeIndex}`).parentElement;
+                    removedElement.remove();
+
+                    remove.parentElement.remove();
+                })
+            })
+
+            const contentInput = document.getElementsByName(`content-${currentCount}`)[0];
+            const linkInput = document.getElementsByName(`link-${currentCount}`)[0];
+
+            const contentElement = document.getElementById(`content-${currentCount}`);
+            const linkElement = document.getElementById(`link-${currentCount}`);
+            const connectElement = document.getElementById(`connect-${currentCount}`);
+
+            contentInput.addEventListener('change', (e) => {
+                contentElement.innerText = e.target.value;
+            })
+
+            linkInput.addEventListener('change', (e) => {
+                linkElement.innerText = e.target.value;
+                if (e?.target?.value) {
+                    connectElement.classList.add("show");
+                } else {
+                    connectElement.classList.remove("show");
+                }
+                if (e?.target?.value?.startsWith("https://")) {
+                    linkElement.href = e.target.value;
+                } else {
+                    linkElement.href = "https://" + e.target.value;
+                }
+            })
+        }
+
+        init(1);
+        init(2);
+
+        titleInput.addEventListener('change', (e) => {
+            titleElement.innerText = e.target.value;
+        })
+
+        titleListInput.addEventListener('change', (e) => {
+            titleListElement.innerText = e.target.value;
+        })
+
+        descriptionInput.addEventListener('change', (e) => {
+            descriptionElement.innerText = e.target.value;
+        })
+
+        addButton.addEventListener('click', function () {
+            const newFormItem = document.createElement("div");
+            newFormItem.innerHTML = `<div class="form-item" data-index=${count}>
+                <div style="flex: 1">
+                    <label>Nội dung</label>
+                    <input name="content-${count}" placeholder="Nhập nội dung" />
+                </div>
+                <div style="flex: 1">
+                    <label>Liên kết</label>
+                    <input name="link-${count}" placeholder="Nhập liên kết" />
+                </div>
+                <div class="remove">
+                    ✖
+                </div>
+            </div>`;
+            formList.appendChild(newFormItem);
+
+            const newItem = document.createElement('li');
+            newItem.innerHTML = `<span class="content" id="content-${count}">Nội dung mẫu</span><span class="connect" id="connect-${count}"> - </span><a class="link" target="_blank" href="" id="link-${count}"></a>`;
+            list.appendChild(newItem);
+
+            init(count);
+
+            count++;
+        })
+
+        copyButton.addEventListener('click', function () {
+            let range = document.createRange();
+            let textToCopy = document.getElementById('preview');
+            range.selectNode(textToCopy);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+
+            try {
+                let successful = document.execCommand('copy');
+                let msg = successful ? 'thành công' : 'thất bại';
+                console.log('Sao chép văn bản ' + msg);
+            } catch (err) {
+                console.log('Không thể sao chép, lỗi: ', err);
+            }
+
+            window.getSelection().removeAllRanges();
+        });
+    </script>
+</body>
+
+</html>
