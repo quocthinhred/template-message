@@ -17,6 +17,7 @@
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 28px;
+        padding: 50px;
     }
 
     .item {
@@ -77,7 +78,7 @@
         margin-bottom: 20px;
     }
 
-    #copy {
+    #copy, #copy-media {
         margin-top: 20px;
         background-color: rgb(95, 178, 250);
     }
@@ -121,16 +122,48 @@
         right: 10px;
     }
 
-    .preview {
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        gap: 160px;
+    .preview, .preview-media {
+        flex: 1;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 50px;
     }
 
     div:empty {
         display: none;
     }
+
+    .connect {
+        display: none;
+    }
+
+    .connect.show {
+        display: inline;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        outline: none;
+    }
+
+    td {
+        padding: 5px 15px;
+    }
+
+    h2, a {
+        margin: 20px;
+        font-size: 14px;
+    }
+
+    @media only screen and (max-width: 1366px) {
+        .preview-container {
+            flex-direction: column;
+        }
+    }
+
 </style>
 
 <body style="padding-top: 100px;">
@@ -171,75 +204,131 @@
         </div>
         <button id="add" style="margin: auto; margin-top: 20px;">Thêm dòng ghi chú mới</button>
     </div>
-    <div class="preview">
-        <div id="content">
-            <h1 id="title" class="title" style="margin-bottom: 20px;">Tiêu đề mẫu</h1>
-            <ul>
-                <li><span class="content" id="content-1">Nội dung mẫu</span> - <a class="link" target="_blank" href="https://www.google.com"
-                        id="link-1">www.google.com</a>
-                </li>
-                <li><span class="content" id="content-2">Nội dung mẫu 2</span> - <a class="link" target="_blank" id="link-2"
-                        href="https://www.fb.com">www.fb.com</a>
-                </li>
-            </ul>
+    <div class="preview-container" style="display: flex; gap: 60px; justify-content: center;">
+        <div class="preview">
+            <div id="content">
+                <h1 id="title" class="title" style="margin-bottom: 20px;">Tiêu đề mẫu</h1>
+                <ul>
+                    <li><span class="content" id="content-1">Nội dung mẫu</span><span class="connect" id="connect-1"> - </span><a class="link" target="_blank" href="https://www.google.com"
+                            id="link-1"></a>
+                    </li>
+                    <li><span class="content" id="content-2">Nội dung mẫu 2</span><span class="connect" id="connect-2"> - </span><a class="link" target="_blank" id="link-2"
+                            href="https://www.fb.com"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="copy-btn">
+                <button id="copy">Sao chép</button>
+            </div>
         </div>
-        <!-- <div id="content-media">
-            <h1 id="title" class="title" style="margin-bottom: 20px;">Tiêu đề mẫu</h1>
-            <ul>
-                <li><span class="content" id="content-1">Nội dung mẫu</span> - <a class="link" href="https://www.google.com"
-                        id="link-1">www.google.com</a>
-                </li>
-                <li><span class="content" id="content-2">Nội dung mẫu 2</span> - <a class="link" id="link-2"
-                        href="https://www.fb.com">www.fb.com</a>
-                </li>
-            </ul>
-        </div> -->
+    
+        <div class="preview-media">
+            <div id="content-media">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <img style="width: 100%; margin-bottom: 20px;" src="https://dev.i-test4u.vn/images/landing-page/roadmap/background.png" alt="dtp-logo" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <h2 id="title-media" class="title" style="margin: 20px 0; font-size: x-large; text-align: center;">Tiêu đề mẫu</h2>
+                            </td>
+                        </tr>
+                        <tr class="row-item">
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <td>
+                                <span class="content" id="content-media-1"><h2>Nội dung mẫu</h2></span>
+                            </td>
+                            <td>
+                                <a class="link" target="_blank" href="https://www.google.com" id="link-media-1"></a>
+                            </td>
+                        </tr>
+                        <tr class="row-item">
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <td>
+                                <span class="content" id="content-media-2"><h2>Nội dung mẫu 2</h2></span>
+                            </td>
+                            <td>
+                                <a class="link" target="_blank" id="link-media-2" href="https://www.fb.com"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="copy-btn">
+                <button id="copy-media">Sao chép</button>
+            </div>
+        </div>
     </div>
-
-    <div class="copy-btn">
-        <button id="copy">Sao chép</button>
-    </div>
-
 
     <script>
         let count = 3;
         const addButton = document.getElementById("add");
         const copyButton = document.getElementById("copy");
+        const copyMediaButton = document.getElementById("copy-media");
         const formList = document.getElementById("form-control-item");
         const list = document.querySelector("#content > ul");
         const titleInput = document.getElementsByName("title")[0];
         const titleElement = document.getElementById("title");
+        const titleMediaElement = document.getElementById("title-media");
+        const bodyTable = document.querySelector("tbody");
 
         const init = (currentCount) => {
             const removes = document.querySelectorAll(".remove");
 
             removes.forEach((remove) => {
-                remove.addEventListener('click', () => {
+                remove.onclick = () => {
                     const removeIndex = remove.parentElement.getAttribute("data-index");
                     const removedElement = document.getElementById(`content-${removeIndex}`).parentElement;
+                    const removedMediaElement = document.getElementById(`content-media-${removeIndex}`).parentElement.parentElement;
                     removedElement.remove();
-
+                    removedMediaElement.remove();
                     remove.parentElement.remove();
-                })
+
+                    numberOrder();
+                }
             })
 
             const contentInput = document.getElementsByName(`content-${currentCount}`)[0];
             const linkInput = document.getElementsByName(`link-${currentCount}`)[0];
 
             const contentElement = document.getElementById(`content-${currentCount}`);
+            const contentMediaElement = document.getElementById(`content-media-${currentCount}`);
+
             const linkElement = document.getElementById(`link-${currentCount}`);
+            const linkMediaElement = document.getElementById(`link-media-${currentCount}`);
+
+            const connectElement = document.getElementById(`connect-${currentCount}`);
 
             contentInput.addEventListener('change', (e) => {
                 contentElement.innerText = e.target.value;
+                contentMediaElement.innerHTML = `<h2>${e.target.value}</h2>`;
             })
 
             linkInput.addEventListener('change', (e) => {
                 linkElement.innerText = e.target.value;
+                linkMediaElement.innerText = e.target.value;
+                if (e?.target?.value) {
+                    connectElement.classList.add("show");
+                } else {
+                    connectElement.classList.remove("show");
+                }
                 if (e?.target?.value?.startsWith("https://")) {
                     linkElement.href = e.target.value;
+                    linkMediaElement.href = e.target.value;
                 } else {
                     linkElement.href = "https://" + e.target.value;
+                    linkMediaElement.href = "https://" + e.target.value;
                 }
+            })
+        }
+
+        const numberOrder = () => {
+            const rowItems = document.querySelectorAll(".row-item > th");
+            rowItems.forEach((item, index) => {
+                item.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${index + 1}&nbsp;&nbsp;&nbsp;&nbsp;`;
             })
         }
 
@@ -248,6 +337,7 @@
 
         titleInput.addEventListener('change', (e) => {
             titleElement.innerText = e.target.value;
+            titleMediaElement.innerText = e.target.value;
         })
 
         addButton.addEventListener('click', function () {
@@ -268,10 +358,22 @@
             formList.appendChild(newFormItem);
 
             const newItem = document.createElement('li');
-            newItem.innerHTML = `<span class="content" id="content-${count}">Nội dung mẫu</span> - <a class="link" target="_blank" href="www.google.com" id="link-${count}">www.google.com</a>`;
+            newItem.innerHTML = `<span class="content" id="content-${count}">Nội dung mẫu</span><span class="connect" id="connect-${count}"> - </span><a class="link" target="_blank" href="" id="link-${count}"></a>`;
             list.appendChild(newItem);
 
+            const newTableItem = document.createElement('tr');
+            newTableItem.classList.add("row-item");
+            newTableItem.innerHTML = `<th>&nbsp;&nbsp;&nbsp;&nbsp;${count}&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <td>
+                                <span class="content" id="content-media-${count}"><h2>Nội dung mẫu</h2></span>
+                            </td>
+                            <td>
+                                <a class="link" target="_blank" id="link-media-${count}" href="https://www.fb.com"></a>
+                            </td>`;
+            bodyTable.appendChild(newTableItem);
+
             init(count);
+            numberOrder();
 
             count++;
         })
@@ -279,6 +381,24 @@
         copyButton.addEventListener('click', function () {
             let range = document.createRange();
             let textToCopy = document.getElementById('content');
+            range.selectNode(textToCopy);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+
+            try {
+                let successful = document.execCommand('copy');
+                let msg = successful ? 'thành công' : 'thất bại';
+                console.log('Sao chép văn bản ' + msg);
+            } catch (err) {
+                console.log('Không thể sao chép, lỗi: ', err);
+            }
+
+            window.getSelection().removeAllRanges();
+        });
+
+        copyMediaButton.addEventListener('click', function () {
+            let range = document.createRange();
+            let textToCopy = document.getElementById('content-media');
             range.selectNode(textToCopy);
             window.getSelection().removeAllRanges();
             window.getSelection().addRange(range);
