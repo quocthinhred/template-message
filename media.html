@@ -305,7 +305,7 @@
                 </tr>
                 <tr>
                     <td colspan="2"><img id="image-2" style="width: min(100%, 700px);"
-                            src="https://i.imgur.com/HAnZ55x.png" alt="image-2" /></td>
+                            src="https://i.imgur.com/Cp1KCHv.png" alt="image-2" /></td>
                 </tr>
             </tbody>
         </table>
@@ -464,7 +464,26 @@
         })
 
         descriptionInput.addEventListener('change', (e) => {
-            descriptionElement.innerText = e.target.value;
+            const desText = e.target.value;
+            let valueText = desText;
+            let detectHref = "";
+
+            const words = desText.split(" ");
+            words.forEach(word => {
+                if (word.includes(".")) {
+                    const wordChars = word.split('.');
+                    if (wordChars.length > 2 || ["com", "vn", "net", "go", "lol", "asia"].includes(wordChars[1])) {
+                        if (word?.startsWith("https://")) {
+                            detectHref = word;
+                        } else {
+                            detectHref = "https://" + word;
+                        }
+    
+                        valueText = valueText.replace(word, `<a target="_blank" href="${detectHref}">${word}</a>`)
+                    }
+                }
+            })
+            descriptionElement.innerHTML = valueText;
         })
 
         addButton.addEventListener('click', function () {
