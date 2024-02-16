@@ -218,6 +218,12 @@
             </div>
             <div class="form-item">
                 <div style="flex: 1;">
+                    <label>Ghi chú thời gian</label>
+                    <input name="note" placeholder="Nhập ghi chú thời gian" />
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1;">
                     <label>Chọn ảnh chủ đề</label>
                     <div style="display: flex; gap: 60px; align-items: center; height: 210px;">
                         <div class="dropzone" id="dropzone-2">
@@ -302,6 +308,11 @@
                 <tr>
                     <td><img id="image-1" style="width: min(100%, 300px);" src="https://i.imgur.com/d9If7JJ.png"
                             alt="image-1" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2 style="font-size: 14px !important; margin: 20px;">Webinar: <span id="note" style="color: #FDC030;">Ghi chú thời gian sự kiện</span></h2>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2"><img id="image-2" style="width: min(100%, 700px);"
@@ -412,6 +423,8 @@
         const titleListElement = document.getElementById("title-list");
         const descriptionInput = document.getElementsByName("description")[0];
         const descriptionElement = document.getElementById("description");
+        const noteInput = document.getElementsByName("note")[0];
+        const noteElement = document.getElementById("note");
 
         const init = (currentCount) => {
             const removes = document.querySelectorAll(".remove");
@@ -479,11 +492,34 @@
                             detectHref = "https://" + word;
                         }
     
-                        valueText = valueText.replace(word, `<a target="_blank" href="${detectHref}">${word}</a>`)
+                        valueText = valueText.replace(word, `<a style="color: rgb(30, 83, 163);" target="_blank" href="${detectHref}">${word}</a>`)
                     }
                 }
             })
             descriptionElement.innerHTML = valueText;
+        })
+
+        noteInput.addEventListener('change', (e) => {
+            const desText = e.target.value;
+            let valueText = desText;
+            let detectHref = "";
+
+            const words = desText.split(" ");
+            words.forEach(word => {
+                if (word.includes(".")) {
+                    const wordChars = word.split('.');
+                    if (wordChars.length > 2 || ["com", "vn", "net", "go", "lol", "asia"].includes(wordChars[1])) {
+                        if (word?.startsWith("https://")) {
+                            detectHref = word;
+                        } else {
+                            detectHref = "https://" + word;
+                        }
+    
+                        valueText = valueText.replace(word, `<a style="color: rgb(30, 83, 163);" target="_blank" href="${detectHref}">${word}</a>`)
+                    }
+                }
+            })
+            noteElement.innerHTML = valueText;
         })
 
         addButton.addEventListener('click', function () {
