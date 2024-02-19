@@ -17,6 +17,7 @@
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 28px;
+        background-color: #eee;
     }
 
     .item {
@@ -73,12 +74,13 @@
         display: flex;
         justify-content: center;
         flex: 1;
-        align-items: flex-end;
-        margin-bottom: 20px;
+        align-items: center;
+        background-color: #fff;
+        height: 80px;
+        
     }
 
     #copy {
-        margin-top: 20px;
         background-color: rgb(95, 178, 250);
     }
 
@@ -94,6 +96,7 @@
         width: 100%;
         max-width: 800px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: #fff;
     }
 
     .form-item {
@@ -125,7 +128,10 @@
         padding: 20px;
         display: flex;
         justify-content: center;
-        gap: 160px;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+        background-color: #fff;
     }
 
     div:empty {
@@ -183,7 +189,7 @@
 
 <body style="padding-top: 100px;">
     <div class="form-control">
-
+        <h2 style="margin: 30px 0;">THIẾT LẬP NỘI DUNG</h2>
         <div id="form-control-item" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
             <div class="form-item">
                 <div style="flex: 1;">
@@ -251,10 +257,6 @@
                     <label>Nội dung</label>
                     <input name="content-1" placeholder="Nhập nội dung" />
                 </div>
-                <div style="flex: 1">
-                    <label>Liên kết</label>
-                    <input name="link-1" placeholder="Nhập liên kết" />
-                </div>
                 <div class="remove">
                     ✖
                 </div>
@@ -264,10 +266,10 @@
                     <label>Nội dung</label>
                     <input name="content-2" placeholder="Nhập nội dung" />
                 </div>
-                <div style="flex: 1">
+                <!-- <div style="flex: 1">
                     <label>Liên kết</label>
                     <input name="link-2" placeholder="Nhập liên kết" />
-                </div>
+                </div> -->
                 <div class="remove">
                     ✖
                 </div>
@@ -275,8 +277,10 @@
         </div>
         <button id="add" style="margin: auto; margin-top: 20px;">Thêm dòng ghi chú mới</button>
     </div>
-    <div id="preview" class="preview">
-        <table style="max-width: 800px;">
+
+    <div class="preview">
+        <h2 style="margin: 30px 0;">XEM TRƯỚC NỘI DUNG</h2>
+        <table id="preview" style="max-width: 800px;">
             <tbody>
                 <tr>
                     <td>
@@ -311,7 +315,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <h2 style="font-size: 14px !important; margin: 20px;">Webinar: <span id="note" style="color: #FDC030;">Ghi chú thời gian sự kiện</span></h2>
+                        <h2 style="font-size: 14px !important; margin: 20px;">Webinar: <span id="note" style="color: #FDC030;"><span>Ghi chú thời gian sự kiện</span></span></h2>
                     </td>
                 </tr>
                 <tr>
@@ -440,29 +444,48 @@
             })
 
             const contentInput = document.getElementsByName(`content-${currentCount}`)[0];
-            const linkInput = document.getElementsByName(`link-${currentCount}`)[0];
+            // const linkInput = document.getElementsByName(`link-${currentCount}`)[0];
 
             const contentElement = document.getElementById(`content-${currentCount}`);
             const linkElement = document.getElementById(`link-${currentCount}`);
             const connectElement = document.getElementById(`connect-${currentCount}`);
 
             contentInput.addEventListener('change', (e) => {
-                contentElement.innerText = e.target.value;
+                const desText = e.target.value;
+                let valueText = desText;
+                let detectHref = "";
+
+                const words = desText.split(" ");
+                words.forEach(word => {
+                    if (word.includes(".")) {
+                        const wordChars = word.split('.');
+                        if (wordChars.length > 2 || ["com", "vn", "net", "go", "lol", "asia"].includes(wordChars[1])) {
+                            if (word?.startsWith("https://")) {
+                                detectHref = word;
+                            } else {
+                                detectHref = "https://" + word;
+                            }
+        
+                            valueText = valueText.replace(word, `<a style="color: rgb(30, 83, 163);" target="_blank" href="${detectHref}">${word}</a>`)
+                        }
+                    }
+                })
+                contentElement.innerHTML = valueText;
             })
 
-            linkInput.addEventListener('change', (e) => {
-                linkElement.innerText = e.target.value;
-                if (e?.target?.value) {
-                    connectElement.classList.add("show");
-                } else {
-                    connectElement.classList.remove("show");
-                }
-                if (e?.target?.value?.startsWith("https://")) {
-                    linkElement.href = e.target.value;
-                } else {
-                    linkElement.href = "https://" + e.target.value;
-                }
-            })
+            // linkInput.addEventListener('change', (e) => {
+            //     linkElement.innerText = e.target.value;
+            //     if (e?.target?.value) {
+            //         connectElement.classList.add("show");
+            //     } else {
+            //         connectElement.classList.remove("show");
+            //     }
+            //     if (e?.target?.value?.startsWith("https://")) {
+            //         linkElement.href = e.target.value;
+            //     } else {
+            //         linkElement.href = "https://" + e.target.value;
+            //     }
+            // })
         }
 
         init(1);
@@ -524,14 +547,10 @@
 
         addButton.addEventListener('click', function () {
             const newFormItem = document.createElement("div");
-            newFormItem.innerHTML = `<div class="form-item" data-index=${count}>
+            newFormItem.innerHTML = `<div class="form-item" data-index="${count}">
                 <div style="flex: 1">
                     <label>Nội dung</label>
                     <input name="content-${count}" placeholder="Nhập nội dung" />
-                </div>
-                <div style="flex: 1">
-                    <label>Liên kết</label>
-                    <input name="link-${count}" placeholder="Nhập liên kết" />
                 </div>
                 <div class="remove">
                     ✖
