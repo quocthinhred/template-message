@@ -19,6 +19,17 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 28px;
         background-color: #eee;
+
+        display: flex;
+        justify-content: space-around;
+        gap: 30px;
+    }
+
+    @media only screen and (max-width: 1365px) {
+        body {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     .item {
@@ -92,8 +103,6 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        margin: auto;
-        margin-bottom: 40px;
         width: 100%;
         max-width: 800px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -191,13 +200,13 @@
     #preview {
         background-image: url("media/image4.png");
         background-size: cover;
-        padding: 50px;
+        padding: 20px 50px;
         width: 700px;
-        min-height: 1000px;
+        min-height: 800px;
         color: #fff;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
     }
 
     .preview-logo {}
@@ -209,18 +218,16 @@
         text-align: center;
         font-size: 54px;
         font-weight: 900;
-        max-width: 400px;
+        max-width: 450px;
         line-height: 70px;
         font-style: italic;
-        transform: rotate(-5deg)
+        transform: rotate(-4deg)
     }
 
     .preview-content {
         display: flex;
         gap: 60px;
-        flex: 1;
         justify-content: space-between;
-        align-self: flex-end;
         width: 100%;
     }
 
@@ -246,17 +253,16 @@
     }
 
     .preview-content-text {
-        align-self: flex-end;
-        text-align: right;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        flex: 1;
     }
 
     .preview-content-item {}
 
     .preview-content-item-label {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bold;
         margin-bottom: 10px;
     }
@@ -285,6 +291,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        width: 50%;
     }
 
     .footer-note {
@@ -302,11 +309,14 @@
         justify-content: center;
         align-items: center;
         border-bottom: 6px solid #94b4fd;
+        overflow: hidden;
+        flex: 1;
     }
 
     .footer-image>img {
         max-width: 230px;
         border-radius: 20px;
+        max-height: 250px;
     }
 
     .footer-title {
@@ -340,13 +350,13 @@
         <div id="form-control-item" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
             <div class="form-item">
                 <div style="flex: 1;">
-                    <label>Tiêu đề <span class="notice">(Tối đa 25 ký tự)</span></label>
-                    <input maxlength="25" name="title" placeholder="Nhập tiêu đề" />
+                    <label>Tiêu đề <span class="notice">(Tối đa 22 ký tự)</span></label>
+                    <input maxlength="22" name="title" placeholder="Nhập tiêu đề" />
                 </div>
             </div>
             <div class="form-item">
                 <div style="flex: 1;">
-                    <label>Đường dẫn</label>
+                    <label>Đường dẫn QR code (Ví dụ: www.eduhome.com.vn)</label>
                     <input name="url" placeholder="Nhập đường dẫn" />
                 </div>
             </div>
@@ -393,6 +403,24 @@
                     <input name="title-list" placeholder="Nhập tiêu đề danh sách" />
                 </div>
             </div> -->
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Ghi chú thời gian</label>
+                    <input name="note" placeholder="Nhập ghi chú thời gian" />
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Webinar tiêu đề <span class="notice">(Tối đa 50 ký tự)</span></label>
+                    <input maxlength="50" name="webinar-title" placeholder="Nhập webinar tiêu đề" />
+                </div>
+            </div>
+            <div class="form-item">
+                <div style="flex: 1;">
+                    <label>Webinar mô tả <span class="notice">(Tối đa 140 ký tự)</span></label>
+                    <input maxlength="140" name="webinar-des" placeholder="Nhập webinar mô tả" />
+                </div>
+            </div>
             <div class="form-item" data-index="1">
                 <div style="flex: 1">
                     <label>Nội dung</label>
@@ -417,24 +445,6 @@
                 </div>
                 <div class="remove">
                     ✖
-                </div>
-            </div>
-            <div class="form-item">
-                <div style="flex: 1;">
-                    <label>Ghi chú thời gian</label>
-                    <input name="note" placeholder="Nhập ghi chú thời gian" />
-                </div>
-            </div>
-            <div class="form-item">
-                <div style="flex: 1;">
-                    <label>Webinar tiêu đề <span class="notice">(Tối đa 50 ký tự)</span></label>
-                    <input maxlength="50" name="webinar-title" placeholder="Nhập webinar tiêu đề" />
-                </div>
-            </div>
-            <div class="form-item">
-                <div style="flex: 1;">
-                    <label>Webinar mô tả <span class="notice">(Tối đa 140 ký tự)</span></label>
-                    <input maxlength="140" name="webinar-des" placeholder="Nhập webinar mô tả" />
                 </div>
             </div>
         </div>
@@ -779,9 +789,8 @@
 
                 const newItem = document.createElement('div');
                 newItem.classList.add("preview-content-item");
-                newItem.innerHTML = `<div id="content-${count}" class="preview-content-item-label">Family of Learning</div>
-                        <p id="des-${count}" class="preview-content-item-des">It is a long established fact that a reader will be
-                            distracted</p>`;
+                newItem.innerHTML = `<div id="content-${count}" class="preview-content-item-label">Nội dung mẫu ${count}</div>
+                        <p id="des-${count}" class="preview-content-item-des">Mô tả nội dung mẫu ${count}</p>`;
                 list.appendChild(newItem);
 
                 init(count);
