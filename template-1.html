@@ -262,14 +262,15 @@
     .preview-content-item {}
 
     .preview-content-item-label {
-        font-size: 20px;
+        font-size: 14px;
         font-weight: bold;
         margin-bottom: 10px;
     }
 
     .preview-content-item-des {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 18px;
+        text-align: justify;
     }
 
     .preview-footer {
@@ -322,6 +323,7 @@
     .footer-title {
         color: #444;
         font-size: 20px;
+        line-height: 22px;
         font-weight: 800;
     }
 
@@ -337,6 +339,7 @@
     .footer-des {
         color: #444;
         font-size: 14px;
+        line-height: 16px;
     }
 
     .notice {
@@ -496,10 +499,24 @@
         </div>
 
         <script>
+            function convertImageToBase64(url, callback) {
+                const img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.height = img.naturalHeight;
+                    canvas.width = img.naturalWidth;
+                    ctx.drawImage(img, 0, 0);
+                    const dataURL = canvas.toDataURL('image/png');
+                    callback(dataURL);
+                };
+                img.src = url;
+            }
+
             const getQRLink = (url, size = 60) => {
                 const encodedUrl = encodeURIComponent(url);
-
-                return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodedUrl}`
+                return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodedUrl}`;
             }
             function capture() {
                 html2canvas(document.querySelector("#preview")).then(canvas => {
@@ -694,7 +711,9 @@
             init(2);
 
             urlInput.addEventListener('change', (e) => {
-                urlElement.src = getQRLink(e.target.value)
+                convertImageToBase64(getQRLink(e.target.value), (imgSrc) => {
+                    urlElement.src = imgSrc;
+                })
             })
 
             titleInput.addEventListener('change', (e) => {
