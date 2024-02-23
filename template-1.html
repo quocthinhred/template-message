@@ -171,12 +171,13 @@
 
     .dropzone {
         flex: 1;
+        padding: 0 10px;
         border: 0.2rem dashed #6583fe;
-        padding: 2rem;
         border-radius: 0.25rem;
+        max-width: 150px;
         background-color: #fff;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 12px;
         transition: 0.25s background-color ease-in-out;
         cursor: pointer;
     }
@@ -236,6 +237,7 @@
         width: 50%;
         display: flex;
         align-items: flex-end;
+        flex-direction: column;
     }
 
     .preview-content-image-footer {
@@ -282,6 +284,23 @@
         overflow: hidden;
         padding: 20px;
         gap: 20px;
+    }
+
+    .preview-url {
+        display: flex;
+        margin-top: 20px;
+        gap: 10px;
+        align-items: center;
+        align-self: flex-start;
+    }
+
+    .preview-url > div {
+        line-height: 20px;
+        font-size: 12px;
+    }
+
+    .preview-url > div a {
+        color: #fff !important;
     }
 
     .footer-logo>img {
@@ -350,11 +369,58 @@
 <body>
     <div class="form-control">
         <h2 style="margin: 30px 0;">THIẾT LẬP NỘI DUNG</h2>
-        <div id="form-control-item" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+        <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
             <div class="form-item">
                 <div style="flex: 1;">
                     <label>Tiêu đề <span class="notice">(Tối đa 22 ký tự)</span></label>
                     <input maxlength="22" name="title" placeholder="Nhập tiêu đề" />
+                </div>
+            </div>
+            <div style="display: flex; overflow: hidden;">
+                <div style="padding-left: 20px;">
+                    <label>Chọn ảnh mô tả</label>
+                    <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
+                        <div class="dropzone" id="dropzone">
+                            Chọn ảnh
+                            <input type="file" name="files" class="dropzone-input" multiple />
+                        </div>
+                        <div style="flex: 1;">
+                            <img style="height: 150px;" id="image-preview-1" src="media/image1.png"
+                                alt="image-preview-1" />
+                        </div>
+
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <div id="form-control-item" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="form-item" data-index="1">
+                            <div style="flex: 1">
+                                <label>Nội dung</label>
+                                <input name="content-1" placeholder="Nhập nội dung" />
+                            </div>
+                            <div style="flex: 1">
+                                <label>Mô tả nội dung</label>
+                                <input name="des-1" placeholder="Nhập mô tả nội dung" />
+                            </div>
+                            <div class="remove">
+                                ✖
+                            </div>
+                        </div>
+                        <div class="form-item" data-index="2">
+                            <div style="flex: 1">
+                                <label>Nội dung</label>
+                                <input name="content-2" placeholder="Nhập nội dung" />
+                            </div>
+                            <div style="flex: 1">
+                                <label>Mô tả nội dung</label>
+                                <input name="des-2" placeholder="Nhập mô tả nội dung" />
+                            </div>
+                            <div class="remove">
+                                ✖
+                            </div>
+                        </div>
+                    </div>
+                    <button id="add" style="margin: auto; margin-top: 20px;">Thêm dòng ghi chú mới</button>
                 </div>
             </div>
             <div class="form-item">
@@ -362,96 +428,47 @@
                     <label>Đường dẫn QR code (Ví dụ: www.eduhome.com.vn)</label>
                     <input name="url" placeholder="Nhập đường dẫn" />
                 </div>
-            </div>
-            <div class="form-item">
                 <div style="flex: 1;">
-                    <label>Chọn ảnh mô tả</label>
-                    <div style="display: flex; gap: 60px; align-items: center; height: 210px;">
-                        <div class="dropzone" id="dropzone">
-                            <img class="dropzone-icon"
-                                src="https://wickedev.com/wp-content/uploads/2021/02/cloud-uploading.png" />
-
-                            Chọn ảnh
-                            <input type="file" name="files" class="dropzone-input" multiple />
-                        </div>
-                        <div style="flex: 1;">
-                            <img style="width: min(100%, 250px);" id="image-preview-1" src="media/image1.png"
-                                alt="image-preview-1" />
-                        </div>
-
-                    </div>
+                    <label>Mô tả QR code <span class="notice">(Tối đa 120 ký tự)</span></label>
+                    <input maxlength="120" name="url-des" placeholder="Nhập mô tả QR code" />
                 </div>
             </div>
-            <div class="form-item">
-                <div style="flex: 1;">
+            <div style="display: flex; overflow: hidden;">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+                    <div class="form-item">
+                        <div style="flex: 1;">
+                            <label>Ghi chú thời gian (Ví dụ: 16:00, Thứ Sáu, 06/12/2024, i-test.vn)</label>
+                            <input name="note" placeholder="Nhập ghi chú thời gian" />
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div style="flex: 1;">
+                            <label>Webinar tiêu đề <span class="notice">(Tối đa 50 ký tự)</span></label>
+                            <input maxlength="50" name="webinar-title" placeholder="Nhập webinar tiêu đề" />
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div style="flex: 1;">
+                            <label>Webinar mô tả <span class="notice">(Tối đa 140 ký tự)</span></label>
+                            <input maxlength="140" name="webinar-des" placeholder="Nhập webinar mô tả" />
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-right: 20px;">
                     <label>Chọn ảnh chủ đề</label>
-                    <div style="display: flex; gap: 60px; align-items: center; height: 210px;">
+                    <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
                         <div class="dropzone" id="dropzone-2">
-                            <img class="dropzone-icon"
-                                src="https://wickedev.com/wp-content/uploads/2021/02/cloud-uploading.png" />
-
                             Chọn ảnh
                             <input type="file" name="files" class="dropzone-input-2" multiple />
                         </div>
                         <div style="flex: 1;">
-                            <img style="width: min(100%, 250px);" id="image-preview-2" src="media/image5.png"
+                            <img style="height: 150px;" id="image-preview-2" src="media/image5.png"
                                 alt="image-preview-2" />
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="form-item">
-                <div style="flex: 1;">
-                    <label>Tiêu đề danh sách</label>
-                    <input name="title-list" placeholder="Nhập tiêu đề danh sách" />
-                </div>
-            </div> -->
-            <div class="form-item">
-                <div style="flex: 1;">
-                    <label>Ghi chú thời gian</label>
-                    <input name="note" placeholder="Nhập ghi chú thời gian" />
-                </div>
-            </div>
-            <div class="form-item">
-                <div style="flex: 1;">
-                    <label>Webinar tiêu đề <span class="notice">(Tối đa 50 ký tự)</span></label>
-                    <input maxlength="50" name="webinar-title" placeholder="Nhập webinar tiêu đề" />
-                </div>
-            </div>
-            <div class="form-item">
-                <div style="flex: 1;">
-                    <label>Webinar mô tả <span class="notice">(Tối đa 140 ký tự)</span></label>
-                    <input maxlength="140" name="webinar-des" placeholder="Nhập webinar mô tả" />
-                </div>
-            </div>
-            <div class="form-item" data-index="1">
-                <div style="flex: 1">
-                    <label>Nội dung</label>
-                    <input name="content-1" placeholder="Nhập nội dung" />
-                </div>
-                <div style="flex: 1">
-                    <label>Mô tả nội dung</label>
-                    <input name="des-1" placeholder="Nhập mô tả nội dung" />
-                </div>
-                <div class="remove">
-                    ✖
-                </div>
-            </div>
-            <div class="form-item" data-index="2">
-                <div style="flex: 1">
-                    <label>Nội dung</label>
-                    <input name="content-2" placeholder="Nhập nội dung" />
-                </div>
-                <div style="flex: 1">
-                    <label>Mô tả nội dung</label>
-                    <input name="des-2" placeholder="Nhập mô tả nội dung" />
-                </div>
-                <div class="remove">
-                    ✖
-                </div>
-            </div>
         </div>
-        <button id="add" style="margin: auto; margin-top: 20px;">Thêm dòng ghi chú mới</button>
     </div>
 
     <div class="preview">
@@ -464,8 +481,11 @@
             <div class="preview-content">
                 <div class="preview-content-image">
                     <img id="image-1" src="media/image1.png" />
-                    <div class="preview-content-image-footer">
-                        <img id="url" src="" alt="">
+                    <div class="preview-url">
+                        <img style="height: 60px; height: 60px;" alt="qr-code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAj1JREFUaEPtWu1ywyAMI+//0Nll1/QIs5FkoF1a79fuZhxk+UPAtn3f9/JFP9sBeNu2aZBR/NC36vXIVt304fu7ASN2vIjWTCgMWbbe+ll7uzA8y+kZGJSSCbiU8jaGI+wczKIsmeF3xIeb0iNOe91zht8RHwl4pOG0KW0x4aX8acvU8L9lOAF3mtpHMGyVx0en9K0AK8IcSUvEqje/Pb8je3uJtEzAD4oQg+jvDNOtj6XHw0jnVU5bDODaZvl5OAGXUpQGhxRVmGF1oWo/oxbVb7qXFa+4xEvAs+gK+Al3aaWbKnMY1XgtUhTbp+qLXtPeGjDSvFYkmbqMHA/buRnI2u6S35ROwMTt4a0ZRqmnCIDoXbOlylA6M0FvfbhdWmlKXt2NSssE3EQgzLAVyYgzV845r5Mo/Wt/qOxQNlzmcALunGrYSCJ2asV0/I6a1nKGvQ1bMhFJPPTexABmAojIeF4AIENUzx8HGAVEaVYM25bys0Yfow/a712kZRRYAn5EYLTReAyerIUZZhay7CuzlfXJ2KHgXOZwAmZC6tjcimGlg0bnNDpoMLFG++yN0aVvS+x4qYVHAjYisIRh1Mii/4sxstk2Y5CvNnP+vC0ph/4E/Ag/6tJK5iAFxwS99bH0/7TQFY8FSEnTBGxk2VsYZkbNaTO7jyTg+m1pdnRRg0I1jNZPrWElDZUbD8XWk68oUD3Zu1Raoi6NRlgC7qQd+wYdfhD3vq30gWhqWh2dLcEEzEbq1gyPgrzT+h/1BIWJwUmI9AAAAABJRU5ErkJggg==" />
+                        <div id="url-des">
+                            It is a long established fact that a reader will be distracted by the readable content the readable content readable content
+                        </div>
                     </div>
                 </div>
                 <div class="preview-content-text">
@@ -479,6 +499,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="preview-footer">
                 <div class="footer-info">
                     <div class="footer-logo"><img alt="live-stream-logo" src="media/image7.png" /></div>
@@ -640,6 +661,8 @@
             const noteElement = document.getElementById("note");
             const urlInput = document.getElementsByName("url")[0];
             const urlElement = document.getElementById("url");
+            const urlDesInput = document.getElementsByName("url-des")[0];
+            const urlDesElement = document.getElementById("url-des");
 
             const init = (currentCount) => {
                 const removes = document.querySelectorAll(".remove");
@@ -741,6 +764,29 @@
                     }
                 })
                 noteElement.innerHTML = valueText;
+            })
+
+            urlDesInput.addEventListener('change', (e) => {
+                const desText = e.target.value;
+                let valueText = desText;
+                let detectHref = "";
+
+                const words = desText.split(" ");
+                words.forEach(word => {
+                    if (word.includes(".")) {
+                        const wordChars = word.split('.');
+                        if (wordChars.length > 2 || ["com", "vn", "net", "go", "lol", "asia"].includes(wordChars[1])) {
+                            if (word?.startsWith("https://")) {
+                                detectHref = word;
+                            } else {
+                                detectHref = "https://" + word;
+                            }
+
+                            valueText = valueText.replace(word, `<a style="color: rgb(30, 83, 163);" target="_blank" href="${detectHref}">${word}</a>`)
+                        }
+                    }
+                })
+                urlDesElement.innerHTML = valueText;
             })
 
             titleWebinarInput.addEventListener('change', (e) => {
