@@ -482,7 +482,7 @@
                 <div class="preview-content-image">
                     <img id="image-1" src="media/image1.png" />
                     <div class="preview-url">
-                        <img style="height: 60px; height: 60px;" alt="qr-code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAj1JREFUaEPtWu1ywyAMI+//0Nll1/QIs5FkoF1a79fuZhxk+UPAtn3f9/JFP9sBeNu2aZBR/NC36vXIVt304fu7ASN2vIjWTCgMWbbe+ll7uzA8y+kZGJSSCbiU8jaGI+wczKIsmeF3xIeb0iNOe91zht8RHwl4pOG0KW0x4aX8acvU8L9lOAF3mtpHMGyVx0en9K0AK8IcSUvEqje/Pb8je3uJtEzAD4oQg+jvDNOtj6XHw0jnVU5bDODaZvl5OAGXUpQGhxRVmGF1oWo/oxbVb7qXFa+4xEvAs+gK+Al3aaWbKnMY1XgtUhTbp+qLXtPeGjDSvFYkmbqMHA/buRnI2u6S35ROwMTt4a0ZRqmnCIDoXbOlylA6M0FvfbhdWmlKXt2NSssE3EQgzLAVyYgzV845r5Mo/Wt/qOxQNlzmcALunGrYSCJ2asV0/I6a1nKGvQ1bMhFJPPTexABmAojIeF4AIENUzx8HGAVEaVYM25bys0Yfow/a712kZRRYAn5EYLTReAyerIUZZhay7CuzlfXJ2KHgXOZwAmZC6tjcimGlg0bnNDpoMLFG++yN0aVvS+x4qYVHAjYisIRh1Mii/4sxstk2Y5CvNnP+vC0ph/4E/Ag/6tJK5iAFxwS99bH0/7TQFY8FSEnTBGxk2VsYZkbNaTO7jyTg+m1pdnRRg0I1jNZPrWElDZUbD8XWk68oUD3Zu1Raoi6NRlgC7qQd+wYdfhD3vq30gWhqWh2dLcEEzEbq1gyPgrzT+h/1BIWJwUmI9AAAAABJRU5ErkJggg==" />
+                        <img style="height: 60px; height: 60px;" alt="qr-code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" />
                         <div id="url-des">
                             It is a long established fact that a reader will be distracted by the readable content the readable content readable content
                         </div>
@@ -536,7 +536,13 @@
             }
 
             const getQRLink = (url, size = 60) => {
-                const encodedUrl = encodeURIComponent(url);
+                let detectHref = url;
+                if (url?.startsWith("https://") || url?.startsWith("http://")) {
+                    detectHref = url;
+                } else {
+                    detectHref = "https://" + url;
+                }
+                const encodedUrl = encodeURIComponent(detectHref);
                 return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodedUrl}`;
             }
             function capture() {
