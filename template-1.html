@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghi chú tính năng</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 </head>
 
 <style>
@@ -256,9 +258,6 @@
     }
 
     .preview-content-text {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
         flex: 1;
     }
 
@@ -288,6 +287,7 @@
 
     .preview-url {
         color: #444;
+        width: 100%;
         background-color: #fff;
         display: flex;
         gap: 10px;
@@ -380,7 +380,7 @@
                     <input maxlength="22" name="title" placeholder="Nhập tiêu đề" />
                 </div>
             </div>
-            <div style="display: flex; overflow: hidden;">
+            <div style="display: flex; overflow: hidden; gap: 20px;">
                 <div style="padding-left: 20px;">
                     <!-- <label>Chọn ảnh mô tả</label> -->
                     <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
@@ -395,36 +395,13 @@
 
                     </div>
                 </div>
-                <div style="display: flex; flex-direction: column; flex: 1;">
-                    <div id="form-control-item" style="display: flex; flex-direction: column; gap: 20px;">
-                        <div class="form-item" data-index="1">
-                            <div style="flex: 1">
-                                <label>Nội dung</label>
-                                <input name="content-1" placeholder="Nhập nội dung" />
-                            </div>
-                            <div style="flex: 1">
-                                <label>Mô tả nội dung</label>
-                                <input name="des-1" placeholder="Nhập mô tả nội dung" />
-                            </div>
-                            <div class="remove">
-                                ✖
-                            </div>
-                        </div>
-                        <div class="form-item" data-index="2">
-                            <div style="flex: 1">
-                                <label>Nội dung</label>
-                                <input name="content-2" placeholder="Nhập nội dung" />
-                            </div>
-                            <div style="flex: 1">
-                                <label>Mô tả nội dung</label>
-                                <input name="des-2" placeholder="Nhập mô tả nội dung" />
-                            </div>
-                            <div class="remove">
-                                ✖
-                            </div>
+                <div style="flex: 1; min-height: 200px;">
+                    <label>Nội dung</label>
+                    <div id="form-control-item" style="height: calc(100% - 80px);">
+                        <div id="text-editor">
+
                         </div>
                     </div>
-                    <button id="add" style="margin: auto; margin-top: 20px;">Thêm dòng ghi chú mới</button>
                 </div>
             </div>
             <div class="form-item">
@@ -493,7 +470,7 @@
                     </div>
                 </div>
                 <div class="preview-content-text">
-                    <div class="preview-content-item">
+                    <div class="preview-content-item" style="margin-bottom: 20px;">
                         <div id="content-1" class="preview-content-item-label">Nội dung mẫu 1</div>
                         <p id="des-1" class="preview-content-item-des">Mô tả nội dung mẫu 1</p>
                     </div>
@@ -522,6 +499,19 @@
         <div class="copy-btn">
             <button id="copy">Sao chép</button>
         </div>
+
+        <script type="module">
+            const quill = new Quill('#text-editor', {
+                theme: 'snow'
+            });
+
+            quill.on('text-change', function (delta, oldDelta, source) {
+                const deltaContent = quill.getContents();
+                const htmlContent = quill.root.innerHTML;   
+                const previewContentText = document.querySelector(".preview-content-text");
+                previewContentText.innerHTML = htmlContent;
+            });
+        </script>
 
         <script>
             function convertImageToBase64(url, callback) {
@@ -693,7 +683,7 @@
                 const contentElement = document.getElementById(`content-${currentCount}`);
                 const desElement = document.getElementById(`des-${currentCount}`);
 
-                contentInput.addEventListener('change', (e) => {
+                contentInput?.addEventListener('change', (e) => {
                     const desText = e.target.value;
                     let valueText = desText;
                     let detectHref = "";
@@ -716,7 +706,7 @@
                     contentElement.innerHTML = valueText;
                 })
 
-                desInput.addEventListener('change', (e) => {
+                desInput?.addEventListener('change', (e) => {
                     const desText = e.target.value;
                     let valueText = desText;
                     let detectHref = "";
@@ -845,7 +835,7 @@
                 descriptionWebinarElement.innerHTML = valueText;
             })
 
-            addButton.addEventListener('click', function () {
+            addButton?.addEventListener('click', function () {
                 const newFormItem = document.createElement("div");
                 newFormItem.innerHTML = `<div class="form-item" data-index="${count}">
                     <div style="flex: 1">
