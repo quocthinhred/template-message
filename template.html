@@ -19,7 +19,6 @@
 
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 28px;
         background-color: #eee;
 
         display: flex;
@@ -282,7 +281,13 @@
     }
 
     .preview-content-text {
+        font-size: 12px;
         flex: 1;
+        line-height: 18px;
+    }
+    
+    .preview-content-text strong {
+        font-size: 14px;
     }
 
     .preview-content-item {}
@@ -391,6 +396,10 @@
 
     .notice {
         color: red;
+    }
+
+    #url-des-3 > a, #url-des-2 > a {
+        color: #fff !important;
     }
 </style>
 
@@ -533,7 +542,7 @@
                 TIÊU ĐỀ MẪU
             </div>
             <div style="display: flex; gap: 30px;">
-                <div style="display: flex; justify-content: center; flex-direction: column; width: 50%;">
+                <div style="display: flex; flex-direction: column; width: 50%;">
                     <div class="preview-content-text-2" style="color: #3549A4; font-size: 12px;">
                         <div class="preview-content-item" style="margin-bottom: 10px;">
                             <div id="content-1" class="preview-content-item-label">Nội dung mẫu 1</div>
@@ -570,7 +579,7 @@
                 <div style="display: flex; flex-direction: column; position: relative; width: 50%;">
                     <img style="width: 100px; position: absolute; top: -55px;" alt="live-logo" src="media/image8.png" />
                     <img id="image-2-2" style="border-radius: 30px;" alt="image-2" src="media/image5.png" />
-                    <img src="media/image11.png" style="width: 200px; position: absolute; right: -130px;" />
+                    <img src="media/image11.png" style="width: 200px; position: absolute; right: -130px; top: -40px;" />
                     <div style="display: flex; position: absolute; bottom: 15px; left: 20px; gap: 10px;">
                         <div
                             style="width: 8px; height: 56px; background-color: #cc2228; display: block; border-radius: 50px;">
@@ -581,9 +590,9 @@
                     </div>
                 </div>
                 <div style="flex: 1; display: flex; flex-direction: column;">
-                    <div style="display: flex; justify-content: flex-end; margin-bottom: 50px;">
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 30px;">
                         <img alt="decor-img" src="media/image12.png"
-                            style="width: 150px; margin-top: 20px; margin-left: 50px;" />
+                            style="width: 150px; margin-top: -20px; margin-left: 50px;" />
                     </div>
                     <div id="webinar-title-2" class="footer-title" style="margin-bottom: 10px;">Tiêu đề Webinar mẫu</div>
                     <div id="webinar-des-2" class="footer-des">Mô tả Webinar mẫu</div>
@@ -605,7 +614,7 @@
             </div>
             
             <div style="display: flex; gap: 30px;">
-                <div style="display: flex; justify-content: center; flex-direction: column; width: 50%;">
+                <div style="display: flex; flex-direction: column; width: 50%;">
                     <div class="preview-content-text-3" style="color: #3549A4; font-size: 12px;">
                         <div class="preview-content-item" style="margin-bottom: 10px;">
                             <div id="content-1" class="preview-content-item-label">Nội dung mẫu 1</div>
@@ -642,7 +651,7 @@
                 <div style="display: flex; flex-direction: column; position: relative; width: 50%;">
                     <img style="width: 100px; position: absolute; top: -55px;" alt="live-logo" src="media/image8.png" />
                     <img id="image-2-3" style="border-radius: 30px;" alt="image-2" src="media/image5.png" />
-                    <img src="media/image11.png" style="width: 200px; position: absolute; right: -130px;" />
+                    <img src="media/image11.png" style="width: 200px; position: absolute; right: -130px; top: -40px;" />
                     <div style="display: flex; position: absolute; bottom: 15px; left: 20px; gap: 10px;">
                         <div
                             style="width: 8px; height: 56px; background-color: #cc2228; display: block; border-radius: 50px;">
@@ -653,9 +662,9 @@
                     </div>
                 </div>
                 <div style="flex: 1; display: flex; flex-direction: column;">
-                    <div style="display: flex; justify-content: flex-end; margin-bottom: 50px;">
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 30px;">
                         <img alt="decor-img" src="media/image12.png"
-                            style="width: 150px; margin-top: 20px; margin-left: 50px;" />
+                            style="width: 150px; margin-top: -20px; margin-left: 50px;" />
                     </div>
                     <div id="webinar-title-3" class="footer-title" style="margin-bottom: 10px;">Tiêu đề Webinar mẫu</div>
                     <div id="webinar-des-3" class="footer-des">Mô tả Webinar mẫu</div>
