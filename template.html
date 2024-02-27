@@ -280,25 +280,26 @@
         border-top-right-radius: 30px;
     }
 
-    .preview-content-text {
-        font-size: 12px;
+    .preview-content-text, .preview-content-text-2, .preview-content-text-3 {
+        font-size: 14px;
         flex: 1;
         line-height: 18px;
+        text-align: justify;
     }
     
-    .preview-content-text strong {
-        font-size: 14px;
+    .preview-content-text strong, .preview-content-text-2 strong, .preview-content-text-3 strong {
+        font-size: 16px;
     }
 
     .preview-content-item {}
 
     .preview-content-item-label {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
     }
 
     .preview-content-item-des {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 18px;
         text-align: justify;
     }
@@ -422,7 +423,7 @@
                 <div style="padding-left: 20px;">
                     <!-- <label>Chọn ảnh mô tả</label> -->
                     <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
-                        <div class="dropzone" id="dropzone">
+                        <div style="display: flex; justify-content: center; align-items: center;" class="dropzone" id="dropzone">
                             Chọn ảnh
                             <input type="file" name="files" class="dropzone-input" multiple />
                         </div>
@@ -476,7 +477,7 @@
                 <div style="padding-right: 20px;">
                     <!-- <label>Chọn ảnh chủ đề</label> -->
                     <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
-                        <div class="dropzone" id="dropzone-2">
+                        <div style="display: flex; justify-content: center; align-items: center;" class="dropzone" id="dropzone-2">
                             Chọn ảnh
                             <input type="file" name="files" class="dropzone-input-2" multiple />
                         </div>
@@ -543,15 +544,7 @@
             </div>
             <div style="display: flex; gap: 30px;">
                 <div style="display: flex; flex-direction: column; width: 50%;">
-                    <div class="preview-content-text-2" style="color: #3549A4; font-size: 12px;">
-                        <div class="preview-content-item" style="margin-bottom: 10px;">
-                            <div id="content-1" class="preview-content-item-label">Nội dung mẫu 1</div>
-                            <p id="des-1" class="preview-content-item-des">Mô tả nội dung mẫu 1</p>
-                        </div>
-                        <div class="preview-content-item">
-                            <div id="content-2" class="preview-content-item-label">Nội dung mẫu 2</div>
-                            <p id="des-2" class="preview-content-item-des">Mô tả nội dung mẫu 2</p>
-                        </div>
+                    <div class="preview-content-text-2" style="color: #3549A4;">
                         <div class="preview-content-item" style="margin-bottom: 10px;">
                             <div id="content-1" class="preview-content-item-label">Nội dung mẫu 1</div>
                             <p id="des-1" class="preview-content-item-des">Mô tả nội dung mẫu 1</p>
@@ -605,9 +598,6 @@
                 <img alt="logo" src="media/logo-3.png" />
             </div>
             <div>
-                <div style="font-size: 16px; color: #3549A4;">
-                    Báo cáo hàng tuần
-                </div>
                 <div id="title-3" class="preview-title" style="color: #3549A4; transform: none; font-style: normal; font-weight: 700; text-align: left; margin: 0;">
                     TIÊU ĐỀ MẪU
                 </div>
@@ -615,15 +605,7 @@
             
             <div style="display: flex; gap: 30px;">
                 <div style="display: flex; flex-direction: column; width: 50%;">
-                    <div class="preview-content-text-3" style="color: #3549A4; font-size: 12px;">
-                        <div class="preview-content-item" style="margin-bottom: 10px;">
-                            <div id="content-1" class="preview-content-item-label">Nội dung mẫu 1</div>
-                            <p id="des-1" class="preview-content-item-des">Mô tả nội dung mẫu 1</p>
-                        </div>
-                        <div class="preview-content-item">
-                            <div id="content-2" class="preview-content-item-label">Nội dung mẫu 2</div>
-                            <p id="des-2" class="preview-content-item-des">Mô tả nội dung mẫu 2</p>
-                        </div>
+                    <div class="preview-content-text-3" style="color: #3549A4;">
                         <div class="preview-content-item" style="margin-bottom: 10px;">
                             <div id="content-1" class="preview-content-item-label">Nội dung mẫu 1</div>
                             <p id="des-1" class="preview-content-item-des">Mô tả nội dung mẫu 1</p>
