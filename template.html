@@ -664,13 +664,17 @@
             </div>
         </div>
 
-        <div class="copy-btn">
-            <button id="copy">Sao chép</button>
+        <div style="display: flex; gap: 30px;">
+            <div class="copy-btn">
+                <button id="copy" style="white-space: nowrap;">Sao chép hình ảnh</button>
+            </div>
+            <div class="copy-btn">
+                <button id="copy-2" style="white-space: nowrap;">Sao chép Email</button>
+            </div>
         </div>
 
-        <h2 style="margin: 30px 0;">XEM TRƯỚC NỘI DUNG CHO EMAIL</h2>
         <table id="table-preview-1"
-            style="text-align: left; background-color: rgb(0, 107, 240); margin: 0px; width: 780px; height: 1018.75px; color: rgb(0, 0, 0); box-sizing: border-box; border-collapse: collapse; border-spacing: 0px;">
+            style="display: none; text-align: left; background-color: rgb(0, 107, 240); margin: 0px; width: 780px; height: 1018.75px; color: rgb(0, 0, 0); box-sizing: border-box; border-collapse: collapse; border-spacing: 0px;">
             <tbody>
                 <tr>
                     <td rowspan="8"
@@ -958,7 +962,6 @@
                 <td style="height: 32.5156px; box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
         </table>
-
         <table
             style="border: 1px solid #ccc; display: none; background-color: #fff; width: 792px; border-collapse: collapse; border-spacing: 0px; box-sizing: border-box;"
             id="table-preview-3">
@@ -1106,10 +1109,6 @@
                 <td style="height: 32.5156px; box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
         </table>
-
-        <div class="copy-btn">
-            <button id="copy-2">Sao chép</button>
-        </div>
 
         <script type="module">
             const quill = new Quill('#text-editor', {
@@ -1373,9 +1372,9 @@
                 preview2.style.display = "none";
                 preview3.style.display = "none";
 
-                tablePreview1.style.display = "table";
-                tablePreview2.style.display = "none";
-                tablePreview3.style.display = "none";
+                // tablePreview1.style.display = "table";
+                // tablePreview2.style.display = "none";
+                // tablePreview3.style.display = "none";
             })
 
             template2.addEventListener("click", () => {
@@ -1386,9 +1385,9 @@
                 preview2.style.display = "flex";
                 preview3.style.display = "none";
 
-                tablePreview1.style.display = "none";
-                tablePreview2.style.display = "table";
-                tablePreview3.style.display = "none";
+                // tablePreview1.style.display = "none";
+                // tablePreview2.style.display = "table";
+                // tablePreview3.style.display = "none";
             })
 
             template3.addEventListener("click", () => {
@@ -1399,9 +1398,9 @@
                 preview2.style.display = "none";
                 preview3.style.display = "flex";
 
-                tablePreview1.style.display = "none";
-                tablePreview2.style.display = "none";
-                tablePreview3.style.display = "table";
+                // tablePreview1.style.display = "none";
+                // tablePreview2.style.display = "none";
+                // tablePreview3.style.display = "table";
             })
 
             const init = (currentCount) => {
@@ -1612,15 +1611,18 @@
             copyButton2.addEventListener('click', function () {
                 let range = document.createRange();
                 let textToCopy = document.getElementById(previewTableId);
+                textToCopy.style.display = "table";
                 range.selectNode(textToCopy);
                 window.getSelection().removeAllRanges();
                 window.getSelection().addRange(range);
 
                 try {
                     let successful = document.execCommand('copy');
+                    textToCopy.style.display = "none";
                     let msg = successful ? 'thành công' : 'thất bại';
                     console.log('Sao chép văn bản ' + msg);
                 } catch (err) {
+                    textToCopy.style.display = "none";
                     console.log('Không thể sao chép, lỗi: ', err);
                 }
 
