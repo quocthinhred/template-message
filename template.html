@@ -93,7 +93,8 @@
 
     }
 
-    #copy, #copy-2 {
+    #copy,
+    #copy-2 {
         background-color: rgb(95, 178, 250);
     }
 
@@ -201,7 +202,7 @@
         background-size: cover;
         padding: 20px 50px;
         width: 700px;
-        min-height: 800px;
+        /* min-height: 800px; */
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -214,7 +215,7 @@
         background-repeat: no-repeat;
         padding: 20px 50px;
         width: 700px;
-        min-height: 900px;
+        /* min-height: 900px; */
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -227,7 +228,7 @@
         background-repeat: no-repeat;
         padding: 20px 50px;
         width: 700px;
-        min-height: 900px;
+        /* min-height: 900px; */
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -279,14 +280,18 @@
         border-top-right-radius: 30px;
     }
 
-    .preview-content-text, .preview-content-text-2, .preview-content-text-3 {
+    .preview-content-text,
+    .preview-content-text-2,
+    .preview-content-text-3 {
         font-size: 14px;
         flex: 1;
         line-height: 18px;
         text-align: justify;
     }
-    
-    .preview-content-text strong, .preview-content-text-2 strong, .preview-content-text-3 strong {
+
+    .preview-content-text strong,
+    .preview-content-text-2 strong,
+    .preview-content-text-3 strong {
         font-size: 16px;
     }
 
@@ -327,12 +332,12 @@
         border-bottom-right-radius: 30px;
     }
 
-    .preview-url > div {
+    .preview-url>div {
         line-height: 20px;
         font-size: 12px;
     }
 
-    .preview-url > div a {
+    .preview-url>div a {
         /* color: #444 !important; */
     }
 
@@ -398,29 +403,87 @@
         color: red;
     }
 
-    #url-des-3 > a, #url-des-2 > a {
+    #url-des-3>a,
+    #url-des-2>a {
         color: #fff !important;
     }
 
-    #preview-1 a, #preview-2 a, #preview-3 a {
+    #preview-1 a,
+    #preview-2 a,
+    #preview-3 a {
         text-decoration: none;
         color: unset;
         cursor: text;
     }
-    
-    #url-des-4 a, #url-des-6 a {
+
+    #url-des-4 a,
+    #url-des-6 a {
         color: #fff !important;
     }
 
+    .ios-switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    .ios-switch-control {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .ios-switch-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+    .ios-switch-slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    .ios-switch-control:checked+.ios-switch-slider {
+        background-color: #2196F3;
+    }
+
+    .ios-switch-control:focus+.ios-switch-slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    .ios-switch-control:checked+.ios-switch-slider:before {
+        transform: translateX(26px);
+    }
 </style>
 
 <body>
     <div class="form-control">
         <h2 style="margin: 30px 0;">THIẾT LẬP NỘI DUNG</h2>
         <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-            <div id="template-1" style="padding: 10px 25px; background-color: #3549A4; border-radius: 5px; font-weight: 600; color: #fff; cursor: pointer;">Mẫu 1</div>
-            <div id="template-2" style="padding: 10px 25px; background-color: #3549A4; border-radius: 5px; font-weight: 600; color: #fff; cursor: pointer;">Mẫu 2</div>
-            <div id="template-3" style="padding: 10px 25px; background-color: #3549A4; border-radius: 5px; font-weight: 600; color: #fff; cursor: pointer;">Mẫu 3</div>
+            <div id="template-1"
+                style="padding: 10px 25px; background-color: #3549A4; border-radius: 5px; font-weight: 600; color: #fff; cursor: pointer;">
+                Mẫu 1</div>
+            <div id="template-2"
+                style="padding: 10px 25px; background-color: #3549A4; border-radius: 5px; font-weight: 600; color: #fff; cursor: pointer;">
+                Mẫu 2</div>
+            <div id="template-3"
+                style="padding: 10px 25px; background-color: #3549A4; border-radius: 5px; font-weight: 600; color: #fff; cursor: pointer;">
+                Mẫu 3</div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
             <div class="form-item">
@@ -433,7 +496,8 @@
                 <div style="padding-left: 20px;">
                     <!-- <label>Chọn ảnh mô tả</label> -->
                     <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
-                        <div style="display: flex; justify-content: center; align-items: center;" class="dropzone" id="dropzone">
+                        <div style="display: flex; justify-content: center; align-items: center;" class="dropzone"
+                            id="dropzone">
                             Chọn ảnh
                             <input type="file" name="files" class="dropzone-input" multiple />
                         </div>
@@ -463,37 +527,47 @@
                     <input maxlength="100" name="url-des" placeholder="Nhập mô tả QR code" />
                 </div>
             </div>
-            <div style="display: flex; overflow: hidden;">
-                <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
-                    <div class="form-item">
-                        <div style="flex: 1;">
-                            <label>Ghi chú thời gian (Ví dụ: 16:00, Thứ Sáu, 06/12/2024, i-test.vn)</label>
-                            <input name="note" placeholder="Nhập ghi chú thời gian" />
-                        </div>
-                    </div>
-                    <div class="form-item">
-                        <div style="flex: 1;">
-                            <label>Webinar tiêu đề <span class="notice">(Tối đa 50 ký tự)</span></label>
-                            <input maxlength="50" name="webinar-title" placeholder="Nhập webinar tiêu đề" />
-                        </div>
-                    </div>
-                    <div class="form-item">
-                        <div style="flex: 1;">
-                            <label>Webinar mô tả <span class="notice">(Tối đa 140 ký tự)</span></label>
-                            <input maxlength="140" name="webinar-des" placeholder="Nhập webinar mô tả" />
-                        </div>
-                    </div>
+            <div style="padding: 20px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                <div style="margin: 20px;">
+                    <label>Bật/tắt hiển thị phần Webinar</label>
+                    <label class="ios-switch">
+                        <input id="webinar-switch" checked type="checkbox" class="ios-switch-control">
+                        <span class="ios-switch-slider"></span>
+                    </label>
                 </div>
-                <div style="padding-right: 20px;">
-                    <!-- <label>Chọn ảnh chủ đề</label> -->
-                    <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
-                        <div style="display: flex; justify-content: center; align-items: center;" class="dropzone" id="dropzone-2">
-                            Chọn ảnh
-                            <input type="file" name="files" class="dropzone-input-2" multiple />
+                <div style="display: flex; overflow: hidden;">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+                        <div class="form-item">
+                            <div style="flex: 1;">
+                                <label>Ghi chú thời gian (Ví dụ: 16:00, Thứ Sáu, 06/12/2024, i-test.vn)</label>
+                                <input name="note" placeholder="Nhập ghi chú thời gian" />
+                            </div>
                         </div>
-                        <div style="flex: 1;">
-                            <img style="height: 150px;" id="image-preview-2" src="media/image5.png"
-                                alt="image-preview-2" />
+                        <div class="form-item">
+                            <div style="flex: 1;">
+                                <label>Webinar tiêu đề <span class="notice">(Tối đa 50 ký tự)</span></label>
+                                <input maxlength="50" name="webinar-title" placeholder="Nhập webinar tiêu đề" />
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div style="flex: 1;">
+                                <label>Webinar mô tả <span class="notice">(Tối đa 140 ký tự)</span></label>
+                                <input maxlength="140" name="webinar-des" placeholder="Nhập webinar mô tả" />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-right: 20px;">
+                        <!-- <label>Chọn ảnh chủ đề</label> -->
+                        <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
+                            <div style="display: flex; justify-content: center; align-items: center;" class="dropzone"
+                                id="dropzone-2">
+                                Chọn ảnh
+                                <input type="file" name="files" class="dropzone-input-2" multiple />
+                            </div>
+                            <div style="flex: 1;">
+                                <img style="height: 150px;" id="image-preview-2" src="media/image5.png"
+                                    alt="image-preview-2" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -512,7 +586,8 @@
                 <div class="preview-content-image">
                     <img id="image-1-1" src="media/image1.png" />
                     <div class="preview-url">
-                        <img id="url-1" style="height: 60px; height: 60px;" alt="qr-code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" />
+                        <img id="url-1" style="height: 60px; height: 60px;" alt="qr-code"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" />
                         <div id="url-des-1">
                             Có sẵn tại <a target="_blank" href="https://dtp-education.com/">dtp-education.com</a>
                         </div>
@@ -529,8 +604,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="preview-footer">
+
+            <div class="preview-footer webinar-section">
                 <div class="footer-info">
                     <div class="footer-logo"><img alt="live-stream-logo" src="media/image7.png" /></div>
                     <div class="footer-note"><span id="note-1">Ghi chú thời gian mẫu</span></div>
@@ -549,7 +624,8 @@
             <div style="display: flex; justify-content: flex-end;">
                 <img alt="logo" src="media/logo-3.png" />
             </div>
-            <div id="title-2" class="preview-title" style="color: #3549A4; transform: none; font-style: normal; font-weight: 700; text-align: left; margin: 0;">
+            <div id="title-2" class="preview-title"
+                style="color: #3549A4; transform: none; font-style: normal; font-weight: 700; text-align: left; margin: 0;">
                 TIÊU ĐỀ MẪU
             </div>
             <div style="display: flex; gap: 30px;">
@@ -573,12 +649,13 @@
                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" />
                         </div>
                         <div id="url-des-2">
-                            Có sẵn tại <a style="color: #fff;" target="_blank" href="https://dtp-education.com/">dtp-education.com</a>
+                            Có sẵn tại <a style="color: #fff;" target="_blank"
+                                href="https://dtp-education.com/">dtp-education.com</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="display: flex; gap: 10px; margin-top: 30px;">
+            <div style="display: flex; gap: 10px; margin-top: 30px;" class="webinar-section">
                 <div style="display: flex; flex-direction: column; position: relative; width: 50%;">
                     <img style="width: 100px; position: absolute; top: -55px;" alt="live-logo" src="media/image8.png" />
                     <img id="image-2-2" style="border-radius: 30px;" alt="image-2" src="media/image5.png" />
@@ -588,7 +665,9 @@
                             style="width: 8px; height: 56px; background-color: #cc2228; display: block; border-radius: 50px;">
                         </div>
                         <div style="color: #fff; align-self: center; font-weight: 600;">
-                            <div id="note-2" style="font-size: 16px; max-width: 200px; background-color: #cc2228; border-radius: 5px; padding-left: 10px;">20h30, Thứ 6 ngày 22/12/2024</div>
+                            <div id="note-2"
+                                style="font-size: 16px; max-width: 200px; background-color: #cc2228; border-radius: 5px; padding-left: 10px;">
+                                20h30, Thứ 6 ngày 22/12/2024</div>
                         </div>
                     </div>
                 </div>
@@ -597,7 +676,8 @@
                         <img alt="decor-img" src="media/image12.png"
                             style="width: 150px; margin-top: -20px; margin-left: 50px;" />
                     </div>
-                    <div id="webinar-title-2" class="footer-title" style="margin-bottom: 10px;">Tiêu đề Webinar mẫu</div>
+                    <div id="webinar-title-2" class="footer-title" style="margin-bottom: 10px;">Tiêu đề Webinar mẫu
+                    </div>
                     <div id="webinar-des-2" class="footer-des">Mô tả Webinar mẫu</div>
                 </div>
             </div>
@@ -608,11 +688,12 @@
                 <img alt="logo" src="media/logo-3.png" />
             </div>
             <div>
-                <div id="title-3" class="preview-title" style="color: #3549A4; transform: none; font-style: normal; font-weight: 700; text-align: left; margin: 0;">
+                <div id="title-3" class="preview-title"
+                    style="color: #3549A4; transform: none; font-style: normal; font-weight: 700; text-align: left; margin: 0;">
                     TIÊU ĐỀ MẪU
                 </div>
             </div>
-            
+
             <div style="display: flex; gap: 30px;">
                 <div style="display: flex; flex-direction: column; width: 50%;">
                     <div class="preview-content-text-3" style="color: #3549A4;">
@@ -634,12 +715,13 @@
                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" />
                         </div>
                         <div id="url-des-3">
-                            Có sẵn tại <a style="color: #fff;" target="_blank" href="https://dtp-education.com/">dtp-education.com</a>
+                            Có sẵn tại <a style="color: #fff;" target="_blank"
+                                href="https://dtp-education.com/">dtp-education.com</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="display: flex; gap: 10px; margin-top: 30px;">
+            <div style="display: flex; gap: 10px; margin-top: 30px;" class="webinar-section">
                 <div style="display: flex; flex-direction: column; position: relative; width: 50%;">
                     <img style="width: 100px; position: absolute; top: -55px;" alt="live-logo" src="media/image8.png" />
                     <img id="image-2-3" style="border-radius: 30px;" alt="image-2" src="media/image5.png" />
@@ -649,7 +731,9 @@
                             style="width: 8px; height: 56px; background-color: #cc2228; display: block; border-radius: 50px;">
                         </div>
                         <div style="color: #fff; align-self: center; font-weight: 600;">
-                            <div id="note-3" style="font-size: 16px; max-width: 200px; background-color: #cc2228; border-radius: 5px; padding-left: 10px;">20h30, Thứ 6 ngày 22/12/2024</div>
+                            <div id="note-3"
+                                style="font-size: 16px; max-width: 200px; background-color: #cc2228; border-radius: 5px; padding-left: 10px;">
+                                20h30, Thứ 6 ngày 22/12/2024</div>
                         </div>
                     </div>
                 </div>
@@ -658,7 +742,8 @@
                         <img alt="decor-img" src="media/image12.png"
                             style="width: 150px; margin-top: -20px; margin-left: 50px;" />
                     </div>
-                    <div id="webinar-title-3" class="footer-title" style="margin-bottom: 10px;">Tiêu đề Webinar mẫu</div>
+                    <div id="webinar-title-3" class="footer-title" style="margin-bottom: 10px;">Tiêu đề Webinar mẫu
+                    </div>
                     <div id="webinar-des-3" class="footer-des">Mô tả Webinar mẫu</div>
                 </div>
             </div>
@@ -673,7 +758,7 @@
             </div>
         </div>
 
-        <table id="table-preview-1"
+        <table id="table-preview-1" 
             style="display: none; text-align: left; background-color: rgb(0, 107, 240); margin: 0px; width: 780px; height: 1018.75px; color: rgb(0, 0, 0); box-sizing: border-box; border-collapse: collapse; border-spacing: 0px;">
             <tbody>
                 <tr>
@@ -686,9 +771,10 @@
                     <td colspan="3"
                         style="text-align: left; padding: 0.75pt; width: 722.062px; height: 92.6094px; box-sizing: border-box;">
                         <div style="text-align: left; margin: 0px;" class="elementToProof"><span
-                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                    src="media/logo-2.png" id="image_0" width="130" height="67"
-                                    style="width: 130px; height: 67px; margin: 0px; box-sizing: border-box;"></span></div>
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/logo-2.png" id="image_0"
+                                    width="130" height="67"
+                                    style="width: 130px; height: 67px; margin: 0px; box-sizing: border-box;"></span>
+                        </div>
                     </td>
                     <td rowspan="8"
                         style="text-align: left; padding: 0.75pt; vertical-align: top; width: 29.0469px; height: 1018.75px; box-sizing: border-box;">
@@ -711,8 +797,9 @@
                 <tr>
                     <td colspan="2"
                         style="padding: 0; text-align: left; vertical-align: top; word-break: break-word; width: 387px; height: 374px; box-sizing: border-box; white-space: normal;"
-                        class="elementToProof"><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image1.png"
-                                id="image-1-5" width="385" style="margin: 0px; box-sizing: border-box;"></span></td>
+                        class="elementToProof"><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img
+                                src="media/image1.png" id="image-1-5" width="385"
+                                style="margin: 0px; box-sizing: border-box;"></span></td>
                     <td class="preview-content-text-5"
                         style="padding: 4pt 20pt; vertical-align: top; width: 303.951px; height: 271px; box-sizing: border-box; word-break: break-word; white-space: normal; color: #fff;">
                         <p><strong>Nội dung mẫu 1</strong></p>
@@ -727,16 +814,19 @@
                         style="text-align: left; background-color: white; padding: 0.75pt; word-break: break-word; width: 74.0781px; height: 76.9844px; box-sizing: border-box;">
                         <div style="text-align: center; margin: 0px;"><span
                                 style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" id="url-5"
-                                    originalsrc="cid:9d44641a-e429-47d9-b7a1-5fd598ea6336" width="53" height="53"
-                                    style="width: 53px; height: 53px; margin: 0px; box-sizing: border-box;"></span></div>
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg=="
+                                    id="url-5" originalsrc="cid:9d44641a-e429-47d9-b7a1-5fd598ea6336" width="53"
+                                    height="53"
+                                    style="width: 53px; height: 53px; margin: 0px; box-sizing: border-box;"></span>
+                        </div>
                     </td>
                     <td
                         style="text-align: left; background-color: white; padding: 0.75pt; word-break: break-word; width: 312.922px; height: 76.9844px; box-sizing: border-box; white-space: normal;">
                         <p style="text-align: left; line-height: normal; margin: 0in; font-size: 11pt;"><span
                                 style="color: rgb(68, 68, 68);" id="url-des-5">&nbsp;
-                                Có sẵn tại <a href="https://dtp-education.com/" id="OWAcc13f5f2-4671-a19c-4eab-8f7c710a8e05"
-                                    class="OWAAutoLink" data-loopstyle="linkonly"
+                                Có sẵn tại <a href="https://dtp-education.com/"
+                                    id="OWAcc13f5f2-4671-a19c-4eab-8f7c710a8e05" class="OWAAutoLink"
+                                    data-loopstyle="linkonly"
                                     style="color: rgb(68, 68, 68); margin: 0px;">dtp-education.com</a></span></p>
                     </td>
                     <td
@@ -764,15 +854,14 @@
                     <td colspan="2"
                         style="text-align: center; background-color: white; padding-right: 20pt; padding-left: 20pt; word-break: break-word; width: 387px; height: 80.7656px; box-sizing: border-box; white-space: normal;">
                         <p class="elementToProof"
-                            style="text-align: center; line-height: 2.4; background-color: rgb(204, 34, 40); margin: 0in;"><span
-                                style="font-size: 12pt; color: white;" id="note-5">Ghi chú thời gian mẫu</span></p>
+                            style="text-align: center; line-height: 2.4; background-color: rgb(204, 34, 40); margin: 0in;">
+                            <span style="font-size: 12pt; color: white;" id="note-5">Ghi chú thời gian mẫu</span></p>
                     </td>
                     <td rowspan="2"
                         style="text-align: left; background-color: white; padding: 0.75pt; word-break: break-word; height: 267.984px; box-sizing: border-box; white-space: normal; width: 335.063px;">
                         <p style="text-align: center; margin: 12pt 0px 0px;"><span
-                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                    src="media/image5.png" id="image-2-5" width="240"
-                                    style="width: 240px; margin: 0px; box-sizing: border-box;"></span></p>
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image5.png" id="image-2-5"
+                                    width="240" style="width: 240px; margin: 0px; box-sizing: border-box;"></span></p>
                         <div style="text-align: left; margin: 0px;"><span
                                 style="font-size: 12pt; color: rgb(0, 0, 0);"><br></span>
                         </div>
@@ -783,11 +872,12 @@
                         style="text-align: left; background-color: white; padding-right: 20pt; padding-left: 20pt; vertical-align: top; word-break: break-word; width: 387px; height: 187.219px; box-sizing: border-box; white-space: normal;">
                         <p
                             style="text-align: left; line-height: 16.5pt; background-color: white; margin: 0in; font-size: 11pt;">
-                            <span
-                                style="font-size: 15pt; color: rgb(68, 68, 68);"><b id="webinar-title-5">Tiêu
-                                    đề Webinar mẫu</b></span></p>
+                            <span style="font-size: 15pt; color: rgb(68, 68, 68);"><b id="webinar-title-5">Tiêu
+                                    đề Webinar mẫu</b></span>
+                        </p>
                         <p style="text-align: left; line-height: normal; margin: 0in; font-size: 11pt;"><span
-                                style="font-size: 10.5pt; color: rgb(68, 68, 68); background-color: white;" id="webinar-des-5">Mô
+                                style="font-size: 10.5pt; color: rgb(68, 68, 68); background-color: white;"
+                                id="webinar-des-5">Mô
                                 tả Webinar mẫu</span></p>
                     </td>
                 </tr>
@@ -797,6 +887,89 @@
                         <p style="text-align: left; line-height: normal; margin: 0in; font-size: 11pt;"><span
                                 style="font-size: 22pt; color: rgb(0, 0, 0);"><b>&nbsp;</b></span>
                         </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table 
+            style="display: none; background-color: rgb(0, 107, 240); width: 792px; border-collapse: collapse; border-spacing: 0px; box-sizing: border-box; height: 627.656px;"
+            id="table-summary-1">
+            <tbody>
+                <tr>
+                    <td rowspan="5"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 54.7969px; box-sizing: border-box; height: 627.656px;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td colspan="3"
+                        style="padding: 10pt 5.4pt; vertical-align: top; width: 682.312px; box-sizing: border-box; height: 73px;"
+                        class="elementToProof">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
+                                    src="media/logo-2.png" alt="dtp-logo" style="max-width: 677px;"
+                                    loadstarttime="1709190454007"></span></div>
+                    </td>
+                    <td rowspan="5"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 54.8907px; box-sizing: border-box; height: 627.656px;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr class="elementToProof">
+                    <td colspan="3"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 682.312px; height: 97.6718px; box-sizing: border-box;">
+                        <p class="elementToProof"
+                            style="text-align: center; margin: 0in; font-size: 12pt;"><span
+                                style="font-size: 40.5pt; color: white;"><b id="title-7">TIÊU
+                                    ĐỀ MẪU</b></span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 326.667px; box-sizing: border-box; height: 316.219px; word-break: break-word; white-space: normal;"
+                        class="elementToProof">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
+                                    src="media/image1.png" id="image-1-7"
+                                    width="313" style="width: 313px;"></span></div>
+                    </td>
+                    <td rowspan="2" class="preview-content-text-7" 
+                        style="color: #fff; padding: 0in 5.4pt; vertical-align: top; box-sizing: border-box; height: 438.984px; word-break: break-word; white-space: normal;">
+                        <p><strong>Nội dung mẫu 1</strong></p>
+                        <p>Mô tả nội dung mẫu 1</p>
+                        <p><br></p>
+                        <p><strong>Nội dung mẫu 2</strong></p>
+                        <p>Mô tả nội dung mẫu 2</p>
+                    </td>
+                </tr>
+                <tr class="elementToProof">
+                    <td style="background-color: #fff; padding: 0in 5.4pt; width: 74.375px; box-sizing: border-box; word-break: break-word; white-space: normal; height: 122.766px;"
+                        class="elementToProof">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img id="url-7"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" alt="qr-code"
+                                    style="max-width: 677px;" class="ContentPasted2" id="image_1"
+                                    loadstarttime="1709190454008"><br></span></div>
+                    </td>
+                    <td style="background-color: #fff;padding: 0in 5.4pt; width: 252.222px; height: 122.766px; box-sizing: border-box; word-break: break-word; white-space: normal;"
+                        class="elementToProof">
+                        <p style="margin: 0in; font-size: 12pt;"
+                            class="elementToProof"><span
+                                style="font-size: 11pt; color: rgb(68, 68, 68);" id="url-des-7">&nbsp;
+                                Có sẵn tại <a href="https://dtp-education.com/" id="OWAe85ced64-b008-c849-3fb2-64ab33e8d2dc"
+                                    class="OWAAutoLink" data-loopstyle="linkonly" data-auth="NotApplicable"
+                                    style="color: rgb(68, 68, 68); margin-top: 0px; margin-bottom: 0px;">dtp-education.com</a></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 682.312px; box-sizing: border-box; height: 18px;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
                     </td>
                 </tr>
             </tbody>
@@ -813,18 +986,17 @@
                 </td>
                 <td
                     style="text-align: left; padding: 0in 5.4pt; vertical-align: top; width: 389.172px; height: 74px; box-sizing: border-box;">
-                    <p class="elementToProof" style="text-align: left; line-height: normal; margin: 0in 0in 0in 40px;"><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image14.png" id="image_0" width="184"
-                                height="84" style="margin-top: 0px; margin-bottom: 0px;"><img
-                                src="media/image13.png"
-                                style="margin-top: 0px; margin-bottom: 0px;" id="image_1" width="112" height="82"></span></p>
+                    <p class="elementToProof" style="text-align: left; line-height: normal; margin: 0in 0in 0in 40px;">
+                        <span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image14.png" id="image_0"
+                                width="184" height="84" style="margin-top: 0px; margin-bottom: 0px;"><img
+                                src="media/image13.png" style="margin-top: 0px; margin-bottom: 0px;" id="image_1"
+                                width="112" height="82"></span></p>
                 </td>
                 <td colspan="2"
                     style="text-align: left; padding: 20pt 5.4pt; vertical-align: top; width: 332.375px; height: 74px; box-sizing: border-box;">
                     <div style="text-align: right; margin: 0px;" class="elementToProof"><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/logo-3.png" id="image_2" width="135" height="69"
+                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/logo-3.png" id="image_2"
+                                width="135" height="69"
                                 style="width: 135px; height: 69px; margin: 0px; box-sizing: border-box;"
                                 loadstarttime="1709102853124"></span></div>
                 </td>
@@ -843,15 +1015,16 @@
             <tr>
                 <td colspan="3"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 721.547px; box-sizing: border-box; height: 72px;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
                         <span
-                            style="font-size: 40.5pt; color: rgb(53, 73, 164); background-color: rgb(249, 234, 226);"><b id="title-4">TIÊU
-                                ĐỀ MẪU</b></span></p>
+                            style="font-size: 40.5pt; color: rgb(53, 73, 164); background-color: rgb(249, 234, 226);"><b
+                                id="title-4">TIÊU
+                                ĐỀ MẪU</b></span>
+                    </p>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px; height: 72px;">
-                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span
-                            style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -866,38 +1039,35 @@
                 <td colspan="2"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 332.375px; box-sizing: border-box; height: 317px;"
                     class="elementToProof">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image1.png" id="image-1-4"
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image1.png" id="image-1-4"
                                 width="318" style="width: 318px;"></span></div>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px; height: 317px;">
-                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span
-                            style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <td style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; width: 79.8126px; height: 75.1094px; box-sizing: border-box; word-break: break-word; white-space: normal;"
                     class="elementToProof">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                id="url-4"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" id="image_1"
-                                width="57" height="57" style="width: 57px; height: 57px;"></span></div>
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img id="url-4"
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg=="
+                                id="image_1" width="57" height="57" style="width: 57px; height: 57px;"></span></div>
                 </td>
                 <td
                     style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; width: 252.562px; height: 75.1094px; box-sizing: border-box; word-break: break-word; white-space: normal;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
                         <span style="color: white;" id="url-des-4">Có sẵn tại <a href="https://dtp-education.com"
-                                id="OWAbdac0ecd-a9ea-ace3-0d8b-05382af52cb8" class="OWAAutoLink" data-loopstyle="linkonly"
-                                style="color: white; margin-top: 0px; margin-bottom: 0px;">dtp-education.com</a></span></p>
+                                id="OWAbdac0ecd-a9ea-ace3-0d8b-05382af52cb8" class="OWAAutoLink"
+                                data-loopstyle="linkonly"
+                                style="color: white; margin-top: 0px; margin-bottom: 0px;">dtp-education.com</a></span>
+                    </p>
                 </td>
                 <td
                     style="padding: 0in 5.4pt; vertical-align: top; width: 32.1875px; height: 75.1094px; box-sizing: border-box;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
-                        <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
+                        <span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
                 <td style="height: 75.1094px; box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
@@ -905,65 +1075,226 @@
                 <td colspan="3"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 721.547px; box-sizing: border-box; height: 59px;"
                     class="elementToProof">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image8.png" id="image_4"
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image8.png" id="image_4"
                                 width="104" height="54" style="width: 104px; height: 54px;"></span></div>
                 </td>
                 <td rowspan="3"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 32.1875px; box-sizing: border-box; height: 443.547px;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
-                        <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
+                        <span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px; height: 59px;">
-                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span
-                            style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <td class="elementToProof"
                     style="width: 389.172px; height: 346.476px; padding: 0in 5.4pt; vertical-align: top; box-sizing: border-box;">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image5.png" id="image-2-4"
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image5.png" id="image-2-4"
                                 width="357" style="width: 357px;"></span></div>
                 </td>
                 <td rowspan="2" colspan="2"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 332.375px; box-sizing: border-box;">
                     <p class="elementToProof" style="line-height: 22pt; margin: 0in 0in 7.5pt;"><span
-                            style="font-size: 22pt; color: black;"><img
-                                src="media/image11.png" id="image_5"
-                                width="103" height="83"
+                            style="font-size: 22pt; color: black;"><img src="media/image11.png" id="image_5" width="103"
+                                height="83"
                                 style="width: 103px; height: 83px; margin-top: 0px; margin-bottom: 0px;"><img
-                                src="media/image12.png"
-                                style="margin-top: 0px; margin-bottom: 0px;" id="image_6" width="113"
-                                height="83"><b><br></b></span></p>
+                                src="media/image12.png" style="margin-top: 0px; margin-bottom: 0px;" id="image_6"
+                                width="113" height="83"><b><br></b></span></p>
                     <p class="elementToProof" style="line-height: 22pt; margin: 0in 0in 7.5pt;"><span
                             style="font-size: 22pt; color: black;"><b id="webinar-title-4">Tiêu đề
                                 Webinar mẫu</b></span></p>
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
                         <span style="font-size: 14pt; color: black;" id="webinar-des-4">Mô tả
-                            Webinar mẫu</span></p>
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
-                        <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                            Webinar mẫu</span>
+                    </p>
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
+                        <span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
             <tr>
                 <td style="padding: 0in 5.4pt; width: 389.172px; height: 32.5156px; box-sizing: border-box;">
-                    <p
-                        style="text-align: center;line-height: normal; margin: 0in; font-size: 12pt;">
+                    <p style="text-align: center;line-height: normal; margin: 0in; font-size: 12pt;">
                         <span style="font-size: 14pt; color: red;"><b id="note-4">Ghi chú thời
-                                gian mẫu</b></span></p>
+                                gian mẫu</b></span>
+                    </p>
                 </td>
                 <td style="height: 32.5156px; box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
         </table>
         <table
-            style="border: 1px solid #ccc; display: none; background-color: #fff; width: 792px; border-collapse: collapse; border-spacing: 0px; box-sizing: border-box;"
+            id="table-summary-2"
+            style="display: none; background-color: rgb(249, 234, 226); width: 785.984px; border-collapse: collapse; border-spacing: 0px; box-sizing: border-box;">
+            <tbody>
+                <tr>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; box-sizing: border-box; height: 156px;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td style="padding: 0in 5.4pt; vertical-align: top; width: 364.969px; box-sizing: border-box; height: 156px; word-break: break-word; white-space: normal;"
+                        class="elementToProof">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
+                                    src="media/image14.png" id="image_0"
+                                    width="163" height="74" style="width: 163px; height: 74px;"><img
+                                    src="media/image13.png" id="image_1"
+                                    width="96" height="72" style="width: 96px; height: 72px;"></span></div>
+                    </td>
+                    <td colspan="2"
+                        style="padding: 20pt 5.4pt; vertical-align: top; width: 311.719px; box-sizing: border-box; height: 156px; word-break: break-word; white-space: normal;"
+                        class="elementToProof">
+                        <div style="text-align: right;"><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
+                                    src="media/logo-3.png" id="image_4"
+                                    width="133" height="68" style="width: 133px; height: 68px;"></span></div>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 87.7189px; box-sizing: border-box; height: 156px; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; box-sizing: border-box; height: 72px;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td colspan="3"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 676.687px; box-sizing: border-box; height: 72px; word-break: break-word; white-space: normal;">
+                        <p class="elementToProof"
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span
+                                style="font-size: 40.5pt; color: rgb(53, 73, 164);"><b id="title-8">TIÊU
+                                    ĐỀ MẪU</b></span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 87.7189px; box-sizing: border-box; height: 72px; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 364.969px; box-sizing: border-box; word-break: break-word; white-space: normal;">
+                        <table
+                            style="background-color: rgb(249, 234, 226); border-collapse: collapse; border-spacing: 0px; box-sizing: border-box;">
+                            <tbody>
+                                <tr>
+                                    <td class="preview-content-text-8" rowspan="2" style="padding: 4pt 20pt; vertical-align: top; width: 227.95pt; height: 20.4pt; color: rgb(53, 73, 164);">
+                                        <p><strong>Nội dung mẫu 1</strong></p>
+                                        <p>Mô tả nội dung mẫu 1</p>
+                                        <p><br></p>
+                                        <p><strong>Nội dung mẫu 2</strong></p>
+                                        <p>Mô tả nội dung mẫu 2</p>
+                                    </td>
+                                    <td style="height: 20.4pt;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75pt;"></td>
+                                    <td>
+                                        <p
+                                            style="margin: 0in 0in 8pt; font-size: 12pt;">
+                                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td colspan="2"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 311.719px; box-sizing: border-box; height: 266.444px; word-break: break-word; white-space: normal;"
+                        class="elementToProof">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
+                                    src="media/image1.png" id="image-1-8"
+                                    width="305" style="width: 305px;"></span></div>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 87.7189px; box-sizing: border-box; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; height: 69px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 364.969px; height: 69px; box-sizing: border-box; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; width: 78.375px; height: 69px; box-sizing: border-box; word-break: break-word; white-space: normal;"
+                        class="elementToProof">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img id="url-8"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" id="image_3"
+                                    width="64" height="64" style="width: 64px; height: 64px;"></span></div>
+                    </td>
+                    <td
+                        style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; width: 233.344px; height: 69px; box-sizing: border-box; word-break: break-word; white-space: normal;">
+                        <p style="margin: 0in; font-size: 12pt;"><span
+                                style="color: white;" id="url-des-8">Có sẵn tại <a
+                                    href="https://dtp-education.com/" id="OWAedbb56af-f46a-ceed-b230-03be2bb0873f"
+                                    class="OWAAutoLink" data-loopstyle="linkonly"
+                                    style="color: white; margin-top: 0px; margin-bottom: 0px;">dtp-education.com</a></span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 87.7189px; height: 69px; box-sizing: border-box; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; box-sizing: border-box; height: 18px;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 364.969px; box-sizing: border-box; height: 18px; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td colspan="2"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 311.719px; box-sizing: border-box; height: 18px; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 87.7189px; box-sizing: border-box; height: 18px; word-break: break-word; white-space: normal;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table
+            style="display: none; border: 1px solid #ccc; background-color: #fff; width: 792px; border-collapse: collapse; border-spacing: 0px; box-sizing: border-box;"
             id="table-preview-3">
             <tr>
                 <td rowspan="7"
@@ -975,30 +1306,30 @@
                 <td colspan="2"
                     style="text-align: left; padding: 20pt 5.4pt; vertical-align: top; width: 459.609px; height: 126.813px; box-sizing: border-box;">
                     <div class="elementToProof" style="text-align: left; margin: 0px;"><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/logo-3.png" id="image_2" width="135" height="69"
+                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/logo-3.png" id="image_2"
+                                width="135" height="69"
                                 style="width: 135px; height: 69px; margin: 0px; box-sizing: border-box;"></span></div>
                 </td>
                 <td colspan="3" class="elementToProof"
                     style="width: 265.297px; height: 126.813px; text-align: left; padding: 0in 5.4pt; vertical-align: top; box-sizing: border-box;">
                     <p style="text-align: right; line-height: normal; margin: 0in 0in 0in 40px;"><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image15.png" id="image_0" width="251"
-                                height="156" style="width: 251px; height: 156px; margin-top: 0px; margin-bottom: 0px;"></span></p>
+                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image15.png" id="image_0"
+                                width="251" height="156"
+                                style="width: 251px; height: 156px; margin-top: 0px; margin-bottom: 0px;"></span></p>
                 </td>
             </tr>
             <tr>
                 <td colspan="3"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 721.547px; box-sizing: border-box; height: 72px;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
-                        <span
-                            style="font-size: 40.5pt; color: rgb(53, 73, 164); background-color: #fff;"><b id="title-6">TIÊU
-                                ĐỀ MẪU</b></span></p>
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
+                        <span style="font-size: 40.5pt; color: rgb(53, 73, 164); background-color: #fff;"><b
+                                id="title-6">TIÊU
+                                ĐỀ MẪU</b></span>
+                    </p>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px; height: 72px;">
-                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span
-                            style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -1013,38 +1344,35 @@
                 <td colspan="2"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 332.375px; box-sizing: border-box; height: 317px;"
                     class="elementToProof">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image1.png" id="image-1-6"
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image1.png" id="image-1-6"
                                 width="318" style="width: 318px;"></span></div>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px; height: 317px;">
-                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span
-                            style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <td style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; width: 79.8126px; height: 75.1094px; box-sizing: border-box; word-break: break-word; white-space: normal;"
                     class="elementToProof">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                id="url-6"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" id="image_1"
-                                width="57" height="57" style="width: 57px; height: 57px;"></span></div>
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img id="url-6"
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg=="
+                                id="image_1" width="57" height="57" style="width: 57px; height: 57px;"></span></div>
                 </td>
                 <td
                     style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; width: 252.562px; height: 75.1094px; box-sizing: border-box; word-break: break-word; white-space: normal;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
                         <span style="color: white;" id="url-des-6">Có sẵn tại <a href="https://dtp-education.com"
-                                id="OWAbdac0ecd-a9ea-ace3-0d8b-05382af52cb8" class="OWAAutoLink" data-loopstyle="linkonly"
-                                style="color: white; margin-top: 0px; margin-bottom: 0px;">dtp-education.com</a></span></p>
+                                id="OWAbdac0ecd-a9ea-ace3-0d8b-05382af52cb8" class="OWAAutoLink"
+                                data-loopstyle="linkonly"
+                                style="color: white; margin-top: 0px; margin-bottom: 0px;">dtp-education.com</a></span>
+                    </p>
                 </td>
                 <td
                     style="padding: 0in 5.4pt; vertical-align: top; width: 32.1875px; height: 75.1094px; box-sizing: border-box;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
-                        <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
+                        <span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
                 <td style="height: 75.1094px; box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
@@ -1052,62 +1380,224 @@
                 <td colspan="3"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 721.547px; box-sizing: border-box; height: 59px;"
                     class="elementToProof">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image8.png" id="image_4"
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image8.png" id="image_4"
                                 width="104" height="54" style="width: 104px; height: 54px;"></span></div>
                 </td>
                 <td rowspan="3"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 32.1875px; box-sizing: border-box; height: 443.547px;">
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
-                        <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
+                        <span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px; height: 59px;">
-                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span
-                            style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    <p style="margin: 0in 0in 8pt; font-size: 12pt;"><span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <td class="elementToProof"
                     style="width: 389.172px; height: 346.476px; padding: 0in 5.4pt; vertical-align: top; box-sizing: border-box;">
-                    <div><span
-                            style="font-size: 12pt; color: rgb(0, 0, 0);"><img
-                                src="media/image5.png" id="image-2-6"
+                    <div><span style="font-size: 12pt; color: rgb(0, 0, 0);"><img src="media/image5.png" id="image-2-6"
                                 width="357" style="width: 357px;"></span></div>
                 </td>
                 <td rowspan="2" colspan="2"
                     style="padding: 0in 5.4pt; vertical-align: top; width: 332.375px; box-sizing: border-box;">
                     <p class="elementToProof" style="line-height: 22pt; margin: 0in 0in 7.5pt;"><span
-                            style="font-size: 22pt; color: black;"><img
-                                src="media/image11.png" id="image_5"
-                                width="103" height="83"
+                            style="font-size: 22pt; color: black;"><img src="media/image11.png" id="image_5" width="103"
+                                height="83"
                                 style="width: 103px; height: 83px; margin-top: 0px; margin-bottom: 0px;"><img
-                                src="media/image12.png"
-                                style="margin-top: 0px; margin-bottom: 0px;" id="image_6" width="113"
-                                height="83"><b><br></b></span></p>
+                                src="media/image12.png" style="margin-top: 0px; margin-bottom: 0px;" id="image_6"
+                                width="113" height="83"><b><br></b></span></p>
                     <p class="elementToProof" style="line-height: 22pt; margin: 0in 0in 7.5pt;"><span
                             style="font-size: 22pt; color: black;"><b id="webinar-title-6">Tiêu đề
                                 Webinar mẫu</b></span></p>
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
                         <span style="font-size: 14pt; color: black;" id="webinar-des-6">Mô tả
-                            Webinar mẫu</span></p>
-                    <p
-                        style="line-height: normal; margin: 0in; font-size: 12pt;">
-                        <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                            Webinar mẫu</span>
+                    </p>
+                    <p style="line-height: normal; margin: 0in; font-size: 12pt;">
+                        <span style="color: rgb(0, 0, 0);">&nbsp;</span>
+                    </p>
                 </td>
                 <td style="box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
             <tr>
                 <td style="padding: 0in 5.4pt; width: 389.172px; height: 32.5156px; box-sizing: border-box;">
-                    <p
-                        style="text-align: center;line-height: normal; margin: 0in; font-size: 12pt;">
+                    <p style="text-align: center;line-height: normal; margin: 0in; font-size: 12pt;">
                         <span style="font-size: 14pt; color: red;"><b id="note-6">Ghi chú thời
-                                gian mẫu</b></span></p>
+                                gian mẫu</b></span>
+                    </p>
                 </td>
                 <td style="height: 32.5156px; box-sizing: border-box; width: 6.07829px;"><br></td>
             </tr>
+        </table>
+        <table id="table-summary-3"
+            style="display: none; border: 1px solid #ccc; background-color: #fff; width: 785.984px; box-sizing: border-box; border-collapse: collapse; border-spacing: 0px;">
+            <tbody>
+                <tr>
+                    <td class="elementToProof"
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; height: 156px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td class="elementToProof"
+                        style="padding: 20pt 5.4pt; vertical-align: top; word-break: break-word; width: 364.969px; height: 156px; box-sizing: border-box;">
+                        <div><span
+                                style="font-size: 16px; color: rgb(0, 0, 0);"><img
+                                    src="media/logo-3.png" id="image_4"
+                                    width="133" height="68"
+                                    style="width: 133px; height: 68px; max-width: 677px; margin: 0px; vertical-align: top;"></span>
+                        </div>
+                    </td>
+                    <td colspan="3" class="elementToProof"
+                        style="width: 311.719px; height: 156px; padding: 0in 5.4pt; vertical-align: top; word-break: break-word; box-sizing: border-box;">
+                        <div style="text-align: right;"><span
+                                style="font-size: 16px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"><img
+                                    src="media/image15.png" id="image_0" data-imagetype="External"
+                                    width="251" height="156"
+                                    style="width: 251px; height: 156px; max-width: 677px; margin: 0px; box-sizing: border-box; vertical-align: top;"></span>
+                        </div>
+                        <div
+                            style="font-size: 12pt; color: rgb(0, 0, 0);">
+                            <br></div>
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; height: 72px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td colspan="3"
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 676.687px; height: 72px; box-sizing: border-box;">
+                        <p class="elementToProof"
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span
+                                style="font-size: 40.5pt; color: rgb(53, 73, 164);"><b id="title-9">TIÊU
+                                    ĐỀ MẪU</b></span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 87.7189px; height: 72px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 364.969px; box-sizing: border-box;">
+                        <table
+                            style="background-color: #fff; box-sizing: border-box; border-collapse: collapse; border-spacing: 0px;">
+                            <tbody>
+                                <tr>
+                                    <td class="preview-content-text-9" rowspan="2" style="padding: 4pt 20pt; vertical-align: top; width: 227.95pt; height: 20.4pt; color: rgb(53, 73, 164);">
+                                        <p><strong>Nội dung mẫu 1</strong></p>
+                                        <p>Mô tả nội dung mẫu 1</p>
+                                        <p><br></p>
+                                        <p><strong>Nội dung mẫu 2</strong></p>
+                                        <p>Mô tả nội dung mẫu 2</p>
+                                    </td>
+                                    <td style="height: 20.4pt;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75pt;"></td>
+                                    <td>
+                                        <p
+                                            style="margin: 0in 0in 8pt; font-size: 12pt;">
+                                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td colspan="2" class="elementToProof"
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 311.719px; height: 266.444px; box-sizing: border-box;">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img
+                                    src="media/image1.png" id="image-1-9"
+                                    originalsrc="cid:5b84c525-0174-4f24-a023-3d67182db24a" width="305" height="300"
+                                    style="width: 305px; height: 300px;"></span></div>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 87.7189px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; height: 69px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 364.969px; height: 69px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td class="elementToProof"
+                        style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; word-break: break-word; width: 78.375px; height: 69px; box-sizing: border-box;">
+                        <div><span
+                                style="font-size: 12pt; color: rgb(0, 0, 0);"><img id="url-9"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAppJREFUaEPtmttygzAMRMv/f3Q6ZErHdaTlrAIUgvuY2kSrlVYXMj0ej8fXjf6mGfA0TW9BVj5bnr2cab+r/6x9jrpXNXZ+/r0BO9FdZSpiR0WYigzCdG/nH4ZvC/hIj7csRVGz/F9FVMR0FhkhwwNw40KittTjKgf79Dolw25kDMBBJF0ih5X4RCIVVQenYaEp9NJ4RPnZP4zUxcsBrhT0+U6Uw8qJSpgWG4iDlb2HNB6tAacGTJgl+UKHgMsPD73QtGFO6jd11DvEbDotXQZw1WPZPdKA0PK0uW17bDxOD9jZeJBarVQ6ytOjhPCpKe6K5yMAk1x0SojKT9WcZLPx/LlS8Mj+SEB/GR6Afzywxd6KbB/V8NC3mFFttxnO6FchFgmT88VZ703KUHU5kE5LynClqJcFTBivNg5brGqiMKc6JJd4dG3rOOgUgEne9GecZqUtK+69alOS3XsyPAADD7hMuR2aMoE0QZLh3niyVKNdkTJc5b6yyVnwvZSwqJe+DWBS0BfG6HsgkB3hEbLgI4LWN0jy7SEFVTWO5GnkYHIvG1IwYKfYux2XAkXEThUaa01LRzkStqQ5cffahIQBuFXpqmhVc6pnyK3tEcNrkYRzuCpMTg4eBpjkIDlDtpVunlJBIvk8nyn30kqJK/XxaUzwe7FdAFdDKctBOo/s0T6uRZm9piXsDcCJAPw7w5SZPt+cckbEr31+NYdLrSUZ7eYzlwe8lvgZw27JoWyvnXPeSmz6S7zbAlZvCB2daJl1t51ZNdmF4QG4cfdHMtyGEykrVSe4i4P03dIeKl3dgqwp9FoPbi0A3DpMVFptRMlcnQHMpqUB2P2NBxkeohwmE1mVfRL2S0e4y7Q0ACfDfc/MYQzTkPiEc990nE6Yf5b2QwAAAABJRU5ErkJggg==" id="image_3"
+                                    originalsrc="cid:a74ebaaa-aa07-4080-ac19-0b1f3fc4faad" width="64" height="64"
+                                    style="width: 64px; height: 64px;"></span></div>
+                    </td>
+                    <td
+                        style="background-color: rgb(47, 84, 150); padding: 0in 5.4pt; word-break: break-word; width: 233.344px; height: 69px; box-sizing: border-box;">
+                        <p style="margin: 0in; font-size: 12pt;"><span
+                                style="color: white;" id="url-des-9">Có sẵn tại <a
+                                    href="https://dtp-education.com/" id="OWAedbb56af-f46a-ceed-b230-03be2bb0873f"
+                                    class="OWAAutoLink" data-loopstyle="linkonly"
+                                    style="color: white; margin-top: 0px; margin-bottom: 0px;">dtp-education.com</a></span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 87.7189px; height: 69px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; width: 21.5781px; height: 18px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 364.969px; height: 18px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td colspan="2"
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 311.719px; height: 18px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                    <td
+                        style="padding: 0in 5.4pt; vertical-align: top; word-break: break-word; width: 87.7189px; height: 18px; box-sizing: border-box;">
+                        <p
+                            style="line-height: normal; margin: 0in; font-size: 12pt;">
+                            <span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                    </td>
+                </tr>
+            </tbody>
         </table>
 
         <script type="module">
@@ -1124,6 +1614,9 @@
                 const previewContentText4 = document.querySelector(".preview-content-text-4");
                 const previewContentText5 = document.querySelector(".preview-content-text-5");
                 const previewContentText6 = document.querySelector(".preview-content-text-6");
+                const previewContentText7 = document.querySelector(".preview-content-text-7");
+                const previewContentText8 = document.querySelector(".preview-content-text-8");
+                const previewContentText9 = document.querySelector(".preview-content-text-9");
 
                 previewContentText.innerHTML = htmlContent;
                 previewContentText2.innerHTML = htmlContent;
@@ -1131,27 +1624,31 @@
                 previewContentText4.innerHTML = htmlContent;
                 previewContentText5.innerHTML = htmlContent;
                 previewContentText6.innerHTML = htmlContent;
+                previewContentText7.innerHTML = htmlContent;
+                previewContentText8.innerHTML = htmlContent;
+                previewContentText9.innerHTML = htmlContent;
             });
 
             quill.root.addEventListener('paste', (e) => {
-                    e.preventDefault();
+                e.preventDefault();
 
-                    const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+                const text = (e.clipboardData || window.clipboardData).getData('text/plain');
 
-                    const range = quill.getSelection();
-                    if (range) {
-                        quill.insertText(range.index, text);
-                    }
-                });
+                const range = quill.getSelection();
+                if (range) {
+                    quill.insertText(range.index, text);
+                }
+            });
         </script>
 
         <script>
             let previewId = "preview-1";
-            let previewTableId = "table-preview-1";
+            let previewTableId = "1";
+            let prefixTable = "table-preview";
             function convertImageToBase64(url, callback) {
                 const img = new Image();
                 img.crossOrigin = 'Anonymous';
-                img.onload = function() {
+                img.onload = function () {
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
                     canvas.height = img.naturalHeight;
@@ -1247,6 +1744,9 @@
                     funcReadImage(files, "image-1-4", "image-preview-1")
                     funcReadImage(files, "image-1-5", "image-preview-1")
                     funcReadImage(files, "image-1-6", "image-preview-1")
+                    funcReadImage(files, "image-1-7", "image-preview-1")
+                    funcReadImage(files, "image-1-8", "image-preview-1")
+                    funcReadImage(files, "image-1-9", "image-preview-1")
                 }, false);
 
                 dropzone.addEventListener('click', function (e) {
@@ -1260,6 +1760,9 @@
                     funcReadImage(e.target.files, "image-1-4", "image-preview-1");
                     funcReadImage(e.target.files, "image-1-5", "image-preview-1");
                     funcReadImage(e.target.files, "image-1-6", "image-preview-1");
+                    funcReadImage(e.target.files, "image-1-7", "image-preview-1");
+                    funcReadImage(e.target.files, "image-1-8", "image-preview-1");
+                    funcReadImage(e.target.files, "image-1-9", "image-preview-1");
                     dropzone_input.value = "";
                 })
 
@@ -1311,6 +1814,9 @@
             const title4Element = document.getElementById("title-4");
             const title5Element = document.getElementById("title-5");
             const title6Element = document.getElementById("title-6");
+            const title7Element = document.getElementById("title-7");
+            const title8Element = document.getElementById("title-8");
+            const title9Element = document.getElementById("title-9");
 
             const titleWebinarInput = document.getElementsByName("webinar-title")[0];
             const titleWebinar1Element = document.getElementById("webinar-title-1");
@@ -1343,6 +1849,9 @@
             const url4Element = document.getElementById("url-4");
             const url5Element = document.getElementById("url-5");
             const url6Element = document.getElementById("url-6");
+            const url7Element = document.getElementById("url-7");
+            const url8Element = document.getElementById("url-8");
+            const url9Element = document.getElementById("url-9");
 
             const urlDesInput = document.getElementsByName("url-des")[0];
             const urlDes1Element = document.getElementById("url-des-1");
@@ -1351,22 +1860,43 @@
             const urlDes4Element = document.getElementById("url-des-4");
             const urlDes5Element = document.getElementById("url-des-5");
             const urlDes6Element = document.getElementById("url-des-6");
+            const urlDes7Element = document.getElementById("url-des-7");
+            const urlDes8Element = document.getElementById("url-des-8");
+            const urlDes9Element = document.getElementById("url-des-9");
 
             const template1 = document.getElementById("template-1");
             const template2 = document.getElementById("template-2");
             const template3 = document.getElementById("template-3");
 
-            const preview1= document.getElementById("preview-1");
-            const preview2= document.getElementById("preview-2");
-            const preview3= document.getElementById("preview-3");
+            const preview1 = document.getElementById("preview-1");
+            const preview2 = document.getElementById("preview-2");
+            const preview3 = document.getElementById("preview-3");
 
             const tablePreview1 = document.getElementById("table-preview-1");
             const tablePreview2 = document.getElementById("table-preview-2");
             const tablePreview3 = document.getElementById("table-preview-3");
 
+            const webinarSwitch = document.getElementById("webinar-switch");
+
+            const webinarSections = document.querySelectorAll("div.webinar-section");
+
+            webinarSwitch.addEventListener("change", (e) => {
+                if (e?.target?.checked) {
+                    prefixTable = "table-preview"
+                    webinarSections.forEach(section => {
+                        section.style.display = "flex";
+                    })
+                } else {
+                    prefixTable = "table-summary"
+                    webinarSections.forEach(section => {
+                        section.style.display = "none";
+                    })
+                }
+            })
+
             template1.addEventListener("click", () => {
                 previewId = "preview-1";
-                previewTableId = "table-preview-1";
+                previewTableId = "1";
 
                 preview1.style.display = "flex";
                 preview2.style.display = "none";
@@ -1379,7 +1909,7 @@
 
             template2.addEventListener("click", () => {
                 previewId = "preview-2";
-                previewTableId = "table-preview-2";
+                previewTableId = "2";
 
                 preview1.style.display = "none";
                 preview2.style.display = "flex";
@@ -1392,7 +1922,7 @@
 
             template3.addEventListener("click", () => {
                 previewId = "preview-3";
-                previewTableId = "table-preview-3";
+                previewTableId = "3";
 
                 preview1.style.display = "none";
                 preview2.style.display = "none";
@@ -1480,6 +2010,9 @@
                     url4Element.src = imgSrc;
                     url5Element.src = imgSrc;
                     url6Element.src = imgSrc;
+                    url7Element.src = imgSrc;
+                    url8Element.src = imgSrc;
+                    url9Element.src = imgSrc;
                 })
             })
 
@@ -1490,6 +2023,9 @@
                 title4Element.innerText = e.target.value;
                 title5Element.innerText = e.target.value;
                 title6Element.innerText = e.target.value;
+                title7Element.innerText = e.target.value;
+                title8Element.innerText = e.target.value;
+                title9Element.innerText = e.target.value;
             })
 
             noteInput.addEventListener('change', (e) => {
@@ -1546,6 +2082,9 @@
                 urlDes4Element.innerHTML = valueText;
                 urlDes5Element.innerHTML = valueText;
                 urlDes6Element.innerHTML = valueText;
+                urlDes7Element.innerHTML = valueText;
+                urlDes8Element.innerHTML = valueText;
+                urlDes9Element.innerHTML = valueText;
             })
 
             titleWebinarInput.addEventListener('change', (e) => {
@@ -1610,7 +2149,7 @@
 
             copyButton2.addEventListener('click', function () {
                 let range = document.createRange();
-                let textToCopy = document.getElementById(previewTableId);
+                let textToCopy = document.getElementById(prefixTable + "-" + previewTableId);
                 textToCopy.style.display = "table";
                 range.selectNode(textToCopy);
                 window.getSelection().removeAllRanges();
