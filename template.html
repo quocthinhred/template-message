@@ -494,7 +494,10 @@
             </div>
             <div style="display: flex; overflow: hidden; gap: 20px;">
                 <div style="padding-left: 20px;">
-                    <!-- <label>Chọn ảnh mô tả</label> -->
+                    <div style="flex: 1; margin-bottom: 20px;">
+                        <label>URL ảnh mô tả</label>
+                        <input name="url-image-1" placeholder="Ảnh mô tả" />
+                    </div>
                     <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
                         <div style="display: flex; justify-content: center; align-items: center;" class="dropzone"
                             id="dropzone">
@@ -559,6 +562,10 @@
                     <div style="padding-right: 20px;">
                         <!-- <label>Chọn ảnh chủ đề</label> -->
                         <div style="display: flex; gap: 10px; height: 210px; flex-direction: column;">
+                            <div style="flex: 1; margin-bottom: 20px;">
+                                <label>URL ảnh webinar</label>
+                                <input name="url-image-2" placeholder="Ảnh webinar" />
+                            </div>
                             <div style="display: flex; justify-content: center; align-items: center;" class="dropzone"
                                 id="dropzone-2">
                                 Chọn ảnh
@@ -1712,7 +1719,47 @@
                 const dropzone_input_2 = dropzone2.querySelector('.dropzone-input-2');
                 const imagePreview1 = document.getElementById("image-preview-1");
                 const imagePreview2 = document.getElementById("image-preview-2");
+                const image11 = document.getElementById("image-1-1");
+                const image12 = document.getElementById("image-1-2");
+                const image13 = document.getElementById("image-1-3");
+                const image14 = document.getElementById("image-1-4");
+                const image15 = document.getElementById("image-1-5");
+                const image16 = document.getElementById("image-1-6");
+                const image17 = document.getElementById("image-1-7");
+                const image18 = document.getElementById("image-1-8");
+                const image19 = document.getElementById("image-1-9");
+                const image21 = document.getElementById("image-2-1");
+                const image22 = document.getElementById("image-2-2");
+                const image23 = document.getElementById("image-2-3");
+                const image24 = document.getElementById("image-2-4");
+                const image25 = document.getElementById("image-2-5");
+                const image26 = document.getElementById("image-2-6");
                 const multiple = dropzone_input.getAttribute('multiple') ? true : false;
+                const urlImage1Input = document.getElementsByName("url-image-1")[0];
+                const urlImage2Input = document.getElementsByName("url-image-2")[0];
+
+                urlImage1Input.addEventListener("change", (e) => {
+                    imagePreview1.src = e.target.value;
+                    image11.src = e.target.value;
+                    image12.src = e.target.value;
+                    image13.src = e.target.value;
+                    image14.src = e.target.value;
+                    image15.src = e.target.value;
+                    image16.src = e.target.value;
+                    image17.src = e.target.value;
+                    image18.src = e.target.value;
+                    image19.src = e.target.value;
+                });
+
+                urlImage2Input.addEventListener("change", (e) => {
+                    imagePreview2.src = e.target.value;
+                    image21.src = e.target.value;
+                    image22.src = e.target.value;
+                    image23.src = e.target.value;
+                    image24.src = e.target.value;
+                    image25.src = e.target.value;
+                    image26.src = e.target.value;
+                });
 
                 ['drag', 'dragstart', 'dragend', 'dragover', 'dragenter', 'dragleave', 'drop'].forEach(function (event) {
                     dropzone.addEventListener(event, function (e) {
